@@ -22,3 +22,5 @@ Dev environment prepare
   - Yeman
     - npm install -g yo
     - npm install -g generator-webapp
+    - install generators
+      - npm install -g generator-angular generator-karma
