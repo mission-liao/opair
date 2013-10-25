@@ -206,6 +206,16 @@ module.exports = function (grunt) {
         }]
       }
     },
+    requirejs: {
+      compile: {
+        options: {
+          name: 'main',
+          baseUrl: '<%= yeoman.app %>/scripts',
+          mainConfigFile: 'app/scripts/main.js',
+          out: '<%= yeoman.dist %>/scripts/main.js'
+        }
+      }
+    },
     cssmin: {
       // By default, your `index.html` <!-- Usemin Block --> will take care of
       // minification. This option is pre-configured if you do not wish to use
@@ -355,6 +365,7 @@ module.exports = function (grunt) {
     'cdnify',
     'ngmin',
     'cssmin',
+    'requirejs',
     'uglify',
     'rev',
     'usemin'
