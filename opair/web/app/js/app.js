@@ -14,11 +14,10 @@ define([
         "webApp.controllers"
     ])
     .config(function ($routeProvider) {
-        console.log("config is called.");
         $routeProvider
         .when("/", {
-            templateUrl: "views/main.html",
-            controller: "MainCtrl"
+            templateUrl: "views/home.html",
+            controller: "ctrl.home"
         })
         .otherwise({
             redirectTo: '/'

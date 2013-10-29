@@ -5,13 +5,13 @@ $iconWhiteSpritePath: "../images/glyphicons-halflings-white.png";
 
 /* Put your CSS here */
 html, body {
-  margin: 20px;
 }
 
 body {
     background: #fafafa;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #333;
+    line-height: normal;
 }
 
 .hero-unit {
@@ -29,4 +29,28 @@ body {
     font-size: 60px;
     line-height: 1;
     letter-spacing: -1px;
+}
+
+.head {
+    display: table;
+    width: 100%;
+    height: auto;
+    background-color: #DB6A39;
+}
+
+.logo {
+    text-align: left;
+    font-weight: bolder;
+    font-size: 500%;
+    color: white;
+    display: table-cell;
+}
+
+.logo span {
+    text-decoration: underline;
+}
+
+.login {
+    display: table-cell;
+    float: right;
 }

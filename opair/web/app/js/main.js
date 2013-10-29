@@ -46,9 +46,6 @@ require.config({
     }
 });
 
-// defering angular bootstrap-process,
-// refer to https://github.com/angular/angular.js/pull/2052
-window.name = "NG_DEFER_BOOTSTRAP!";
 
 require([
     "angular",
@@ -58,9 +55,7 @@ require([
     "use strict";
 
     var $body = ng.element(document.getElementsByTagName("body")[0]);
-    $body.addClass("ng-app");
-    console.log(app['name']);
+    // trigger bootstrap for the 1st time.
     ng.bootstrap($body, [app["name"]]);
-    ng.resumeBootstrap();
 });
 

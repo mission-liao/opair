@@ -1,11 +1,20 @@
-define(["angular"], function (angular) {
+define(["angular"], function (ng) {
     "use strict";
 
-    return angular.module("webApp.controllers", [])
-        .controller("MainCtrl", ["$scope", "$injector", function ($scope, $injector) {
-            console.log("mission is here.");
-            require(["controllers/welcome"], function (MainCtrl) {
-                $injector.invoke(MainCtrl, this, {"$scope": $scope});
+    return ng.module("webApp.controllers", [])
+        .controller("ctrl.login", ["$scope", "$injector", "$http", function ($scope, $injector, $http) {
+            require(["controllers/login"], function (c) {
+                $injector.invoke(c, this, {"$scope": $scope, "$http": $http});
+            });
+        }])
+        .controller("ctrl.home", ["$scope", "$injector", function ($scope, $injector) {
+            require(["controllers/home"], function (c) {
+                $injector.invoke(c, this, {"$scope": $scope});
+            });
+        }])
+        .controller("ctrl.psswd", ["$scope", "$injector", "$element", function ($scope, $injector, $elm) {
+            require(["controllers/psswd"], function (c) {
+                $injector.invoke(c, this, {"$scope": $scope, "$elm": $elm});
             });
         }]);
 });

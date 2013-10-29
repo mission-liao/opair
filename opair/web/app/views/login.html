@@ -1,0 +1,20 @@
+<div ng-controller="ctrl.login" ng-switch on="state"> 
+  <form name="sign_up" class="login" ng-switch-when="sign_up">
+    Email: <input type="email" name="email" ng-model="email" required>
+    <span class="alert alert-warning" ng-show="sign_up.email.$error.required">
+      Email required!</span>
+    <span class="alert alert-warning" ng-show="sign_up.email.$error.email">
+      Not a valid email!</span>
+    <div ng-controller="ctrl.psswd">
+      Password: <input name="login_psswd" type="password" ng-model="login_psswd">
+      <span class="alert">
+        The password is {{ strength }} !</span>
+    </div>
+  </form>
+  <div class="btn-group login" ng-switch-default>
+    <button type="button" class="btn btn-default" ng-click="oauth('facebook')">F</button>
+    <button type="button" class="btn btn-default" ng-click="oauth('google')">G</button>
+    <button type="button" class="btn btn-default" ng-click="login()">Sign Up</button>
+  </div>
+</div>
+
