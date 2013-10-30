@@ -3,7 +3,7 @@ define(["angular"], function (ng) {
 
     return ng.module("webApp.controllers", [])
         .controller("ctrl.login", ["$scope", "$injector", "$http", function ($scope, $injector, $http) {
-            require(["controllers/login"], function (c) {
+            require(["controllers/login/login"], function (c) {
                 $injector.invoke(c, this, {"$scope": $scope, "$http": $http});
             });
         }])
@@ -13,7 +13,7 @@ define(["angular"], function (ng) {
             });
         }])
         .controller("ctrl.psswd", ["$scope", "$injector", "$element", function ($scope, $injector, $elm) {
-            require(["controllers/psswd"], function (c) {
+            require(["controllers/login/psswd"], function (c) {
                 $injector.invoke(c, this, {"$scope": $scope, "$elm": $elm});
             });
         }]);
