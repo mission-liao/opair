@@ -1,3 +1,40 @@
-<div class="hero-unit">
-  <h1>'Test'</h1>
+<div class="op_table">
+  <div class="op_table_row">
+    <div>
+      <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+    </div>
+    <div id="intro">
+      <br><br>Disucss important stuffs with anonymous.
+      <br><p></p>
+      <ul>
+        <li>Effective discussion in a massive group <p>comments...</p></li>
+        <li>Find meaningful comments quickly <p>comments...</p></li>
+        <li>Know yourself more during discussion <p>comments...</p></li>
+      </ul>
+    </div>
+    <div id="sign_up">
+      <br><br>Catch up with the whole world !
+      <br><hr>
+      <form name="sign_up" ng-controller="ctrl.sign_up">
+        <input type="email" name="email" placeholder="Email address" ng-model="email" required>
+          <!--
+          <span class="alert alert-warning" ng-show="sign_up.email.$error.required">
+            Email required!</span>
+          <span class="alert alert-warning" ng-show="sign_up.email.$error.email">
+            Not a valid email!</span>
+          -->
+        <span><p>&nbsp;&nbsp;&nbsp;</p></span>
+        <span ng-controller="ctrl.psswd">
+        <input name="login_psswd" type="password" placeholder="Your Password" ng-model="login_psswd">
+            <!--
+            <span class="alert">
+              The password is {{ strength }} !</span>
+            -->
+        </span>
+        <span><p>&nbsp;&nbsp;&nbsp;</p></span>
+        <input type="submit" value="Sign Up">
+      </form>
+    </div>
+  </div>
 </div>
+

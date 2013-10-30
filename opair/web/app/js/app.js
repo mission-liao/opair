@@ -17,7 +17,6 @@ define([
         $routeProvider
         .when("/", {
             templateUrl: "views/home.html",
-            controller: "ctrl.home"
         })
         .otherwise({
             redirectTo: '/'

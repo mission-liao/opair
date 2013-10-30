@@ -7,8 +7,8 @@ define(["angular"], function (ng) {
                 $injector.invoke(c, this, {"$scope": $scope, "$http": $http});
             });
         }])
-        .controller("ctrl.home", ["$scope", "$injector", function ($scope, $injector) {
-            require(["controllers/home"], function (c) {
+        .controller("ctrl.sign_up", ["$scope", "$injector", function ($scope, $injector) {
+            require(["controllers/sign_up"], function (c) {
                 $injector.invoke(c, this, {"$scope": $scope});
             });
         }])
