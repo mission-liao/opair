@@ -1,12 +1,16 @@
-<div ng-controller="ctrl.login" ng-switch on="state"> 
-  <form name="sign_up" class="login" ng-switch-when="sign_up">
-    Email: <input type="email" name="email" ng-model="email" required>
-    Password: <input name="login_psswd" type="password" ng-model="login_psswd">
+<div id="login_main" ng-controller="ctrl.login"> 
+  <form name="sign_up" class="login">
+    <input type="email" name="email" placeholder="Email" ng-model="email">
+    <input name="login_psswd" type="password" placeholder="Password" ng-model="login_psswd">
+    <input type="submit" class="btn btn-login" value="Log In" ng-click="login()">
   </form>
-  <div class="btn-group login" ng-switch-default>
-    <button type="button" class="btn btn-default" ng-click="oauth('facebook')">F</button>
-    <button type="button" class="btn btn-default" ng-click="oauth('google')">G</button>
-    <button type="button" class="btn btn-default" ng-click="login()">Sign Up</button>
+  <p></p>
+  <div id="oauth_login">
+    <span>Or login from:&nbsp;</span>
+    <div class="btn-group">
+      <button type="button" class="btn btn-facebook" ng-click="oauth('facebook')">F</button>
+      <button type="button" class="btn btn-google" ng-click="oauth('google')">G</button>
+    </div>
   </div>
 </div>
 

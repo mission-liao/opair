@@ -1,6 +1,6 @@
 "use strict";
 
-define([], function () {
+define(["angular"], function (ng) {
     return ["$scope", "$http", function ($scope, $http) {
         // TODO: check if we alreay logined.
 
@@ -10,9 +10,9 @@ define([], function () {
         }
 
         $scope.login = function () {
-            $scope.state = "sign_up";
         }
 
         $scope.$apply();
     }];
 });
+

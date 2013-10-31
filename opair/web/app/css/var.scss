@@ -1,0 +1,66 @@
+// Social Color
+$color-fb-blue:       #48649F;
+$color-fb-green:      #69A74E;
+$color-ggl-red:       #E46145;
+
+// color used by ourself
+$color-fg-default:    #FF7538;
+
+// buttons
+.btn-facebook {
+    @include button-variant(white, $color-fb-blue, $btn-default-border);
+}
+
+.btn-google {
+    @include button-variant(white, $color-ggl-red, $btn-default-border);
+}
+
+.btn-login {
+    @include button-variant(white, $color-fb-green, $btn-default-border);
+}
+
+// table
+.op-table {
+    display: table;
+}
+
+.op-table-row {
+    overflow: auto;
+    display: table-row;
+}
+
+.op-table-cell {
+    display: table-cell;
+}
+
+.op-table-sw {
+    @extend .op-table;
+
+    width: auto;
+    min-width: 100%;
+}
+
+.op-table-shw {
+    @extend .op-table-sw;
+
+    height: 100%;
+}
+
+.op-table-row-sh {
+    @extend .op-table-row;
+
+    height: 100%;
+}
+
+.op-table-cell-sw {
+    @extend .op-table-cell;
+
+    width: auto;
+    min-width: 100%;
+}
+
+.op-table-cell-sh {
+    @extend .op-table-cell;
+
+    height: 100%;
+}

@@ -2,10 +2,12 @@ $iconSpritePath: "../images/glyphicons-halflings.png";
 $iconWhiteSpritePath: "../images/glyphicons-halflings-white.png";
 
 @import "bootstrap-sass/lib/bootstrap";
+@import "var.scss";
 
 /* Put your CSS here */
 html, body {
     height: 100%;
+    padding: 0;
 }
 
 body {
@@ -15,29 +17,17 @@ body {
     line-height: normal;
 }
 
-.op_table {
-    width: 100%;
-    height: 100%;
-
-    display: table;
-}
-
-.op_table_row {
-    overflow: auto;
-    height: 100%;
-
-    display: table-row;
-}
-
 #nav, #content {
     height: auto;
     min-height: 100%;
 }
 
 #header {
-    display: table;
-    width: 100%;
-    background-color: #DB6A39;
+    background-color: $color-fg-default;
+
+    position: absolute;
+    top: 0px;
+    left: 0px;
 }
 
 #footer {
@@ -92,19 +82,49 @@ body {
     }
 }
 
-.logo {
+#logo {
+    @extend .op-table-cell;
+
     text-align: left;
     font-weight: bolder;
     font-size: 500%;
     color: white;
-    display: table-cell;
+    padding: 5px;
+
+    width: auto;
+    max-width: 25%;
 }
 
-.logo span {
+#logo span {
     text-decoration: underline;
 }
 
 .login {
-    display: table-cell;
-    float: right;
+    //float: right;
+}
+
+#oauth_login {
+    //float: right;
+}
+
+#login_main {
+    width: auto;
+    max-width: 55%;
+    height: 100%;
+
+    padding: 15px;
+    overflow: hidden;
+
+    font-weight: bolder;
+    font-size: large;
+    color: white;
+
+    position: absolute;
+    right: 0px;
+}
+
+.dev {
+    border-width: 2px;
+    border-style: double;
+    border-color: red;
 }
