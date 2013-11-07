@@ -7,19 +7,18 @@ require.config({
         angular_cookies: "../bower_components/angular-cookies/angular-cookies",
         angular_sanitize: "../bower_components/angular-sanitize/angular-sanitize",
         jquery: "../bower_components/jquery/jquery",
-        bootstrap_affix: "../bower_components/bootstrap-sass/js/bootstrap-affix",
-        bootstrap_alert: "../bower_components/bootstrap-sass/js/bootstrap-alert",
-        bootstrap_dropdown: "../bower_components/bootstrap-sass/js/bootstrap-dropdown",
-        bootstrap_tooltip: "../bower_components/bootstrap-sass/js/bootstrap-tooltip",
-        bootstrap_modal: "../bower_components/bootstrap-sass/js/bootstrap-modal",
-        bootstrap_transition: "../bower_components/bootstrap-sass/js/bootstrap-transition",
-        bootstrap_button: "../bower_components/bootstrap-sass/js/bootstrap-button",
-        bootstrap_popover: "../bower_components/bootstrap-sass/js/bootstrap-popover",
-        bootstrap_typeahead: "../bower_components/bootstrap-sass/js/bootstrap-typeahead",
-        bootstrap_carousel: "../bower_components/bootstrap-sass/js/bootstrap-carousel",
-        bootstrap_scrollspy: "../bower_components/bootstrap-sass/js/bootstrap-scrollspy",
-        bootstrap_collapse: "../bower_components/bootstrap-sass/js/bootstrap-collapse",
-        bootstrap_tab: "../bower_components/bootstrap-sass/js/bootstrap-tab",
+        bootstrap_affix: "../bower_components/bootstrap-sass/js/affix",
+        bootstrap_alert: "../bower_components/bootstrap-sass/js/alert",
+        bootstrap_dropdown: "../bower_components/bootstrap-sass/js/dropdown",
+        bootstrap_tooltip: "../bower_components/bootstrap-sass/js/tooltip",
+        bootstrap_modal: "../bower_components/bootstrap-sass/js/modal",
+        bootstrap_transition: "../bower_components/bootstrap-sass/js/transition",
+        bootstrap_button: "../bower_components/bootstrap-sass/js/button",
+        bootstrap_popover: "../bower_components/bootstrap-sass/js/popover",
+        bootstrap_carousel: "../bower_components/bootstrap-sass/js/carousel",
+        bootstrap_scrollspy: "../bower_components/bootstrap-sass/js/scrollspy",
+        bootstrap_collapse: "../bower_components/bootstrap-sass/js/collapse",
+        bootstrap_tab: "../bower_components/bootstrap-sass/js/tab",
         requirejs_domready: "../bower_components/requirejs-domready/domReady"
     },
 
@@ -46,6 +45,9 @@ require.config({
     }
 });
 
+// refer to http://docs.angularjs.org/guide/bootstrap
+// 'Deferred Bootstrap'
+window.name = "NG_DEFER_BOOTSTRAP!";
 
 require([
     "angular",
@@ -54,8 +56,8 @@ require([
 ], function (ng, app) {
     "use strict";
 
-    var $body = ng.element(document.getElementsByTagName("body")[0]);
     // trigger bootstrap for the 1st time.
-    ng.bootstrap($body, [app["name"]]);
+    ng.bootstrap(document, [app["name"]]);
+    ng.resumeBootstrap();
 });
 

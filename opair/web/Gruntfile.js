@@ -209,12 +209,18 @@ module.exports = function (grunt) {
     requirejs: {
       compile: {
         options: {
-          name: 'main',
+          modules: [
+            {
+              name: "main"
+            }
+          ],
           baseUrl: '<%= yeoman.app %>/js',
           mainConfigFile: 'app/js/main.js',
-          out: '<%= yeoman.dist %>/js/main.js'
+          dir: '<%= yeoman.dist %>/js',
+          optimize: "none",
+          removeCombined: true
         }
-      }
+      },
     },
     cssmin: {
       // By default, your `index.html` <!-- Usemin Block --> will take care of
@@ -367,7 +373,9 @@ module.exports = function (grunt) {
     'cssmin',
     'requirejs',
     'uglify',
-    'rev',
+    // this task would change name of js-files referenced by other js files,
+    // but usemin can't patch those js.
+    //'rev',
     'usemin'
   ]);
 
