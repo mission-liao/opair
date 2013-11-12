@@ -5,7 +5,8 @@ define([
     "angular_resource",
     "angular_cookies",
     "angular_sanitize",
-    "controllers/index"
+    "controllers/index",
+    "services/index"
 ], function (angular) {
     return angular.module("webApp", [
         "ngCookies",
