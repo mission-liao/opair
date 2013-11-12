@@ -1,9 +1,9 @@
-__all__ = ['app']
-
+from __future__ import absolute_import
 from flask import Flask
+from flask.ext.sqlalchemy import SQLAlchemy
 
-app = Flask(__name__);
+app = Flask(__name__)
+app.config.from_object('srv.config')
+db = SQLAlchemy(app)
 
-@app.route('/')
-def test():
-    pass
+import srv.model
