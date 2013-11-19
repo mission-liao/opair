@@ -15,7 +15,7 @@
     <div id="sign_up">
       <br><br>Catch up with the whole world !
       <br><hr>
-      <form name="sign_up" ng-controller="ctrl.sign_up">
+      <form name="sign_up" ng-controller="ctrl_signUp" ng-submit="submit_user()">
         <input type="email" name="email" placeholder="Email address" ng-model="email" required>
           <!--
           <span class="alert alert-warning" ng-show="sign_up.email.$error.required">
@@ -24,7 +24,7 @@
             Not a valid email!</span>
           -->
         <span><p>&nbsp;&nbsp;&nbsp;</p></span>
-        <span ng-controller="ctrl.psswd">
+        <span ng-controller="ctrl_psswd">
         <input name="login_psswd" type="password" placeholder="Your Password" ng-model="login_psswd">
             <!--
             <span class="alert">
@@ -32,7 +32,7 @@
             -->
         </span>
         <span><p>&nbsp;&nbsp;&nbsp;</p></span>
-        <input type="submit" value="Sign Up" class="btn btn-login">
+        <input type="submit" value="Sign Up" class="btn btn-login" ng-disabled="!sign_up.$valid">
       </form>
     </div>
   </div>
