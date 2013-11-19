@@ -5,14 +5,17 @@ define([
     "angular_resource",
     "angular_cookies",
     "angular_sanitize",
+    "angular_route",
     "controllers/index",
-    "services/index"
+    "res/index"
 ], function (angular) {
     return angular.module("webApp", [
         "ngCookies",
         "ngResource",
         "ngSanitize",
-        "webApp.controllers"
+        "ngRoute",
+        "webApp.controllers",
+        "webApp.res"
     ])
     .config(function ($routeProvider) {
         $routeProvider

@@ -6,6 +6,7 @@ require.config({
         angular_resource: "../bower_components/angular-resource/angular-resource",
         angular_cookies: "../bower_components/angular-cookies/angular-cookies",
         angular_sanitize: "../bower_components/angular-sanitize/angular-sanitize",
+        angular_route: "../bower_components/angular-route/angular-route",
         jquery: "../bower_components/jquery/jquery",
         bootstrap_affix: "../bower_components/bootstrap-sass/js/affix",
         bootstrap_alert: "../bower_components/bootstrap-sass/js/alert",
@@ -33,6 +34,9 @@ require.config({
             deps: ["angular"]
         },
         "angular_sanitize": {
+            deps: ["angular"]
+        },
+        "angular_route": {
             deps: ["angular"]
         }
     },
