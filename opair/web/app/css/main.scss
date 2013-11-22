@@ -5,47 +5,6 @@ $iconWhiteSpritePath: "../images/glyphicons-halflings-white.png";
 @import "var.scss";
 
 /* Put your CSS here */
-html, body {
-    height: 100%;
-    padding: 0;
-}
-
-body {
-    background: #fafafa;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #333;
-    line-height: normal;
-}
-
-#nav, #content {
-    height: auto;
-    min-height: 100%;
-}
-
-#header {
-    background-color: $color-fg-default;
-
-    position: absolute;
-    top: 0px;
-    left: 0px;
-}
-
-#footer {
-    clear: both;
-    position: relative;
-    z-index: 10;
-    background-color: #E6E7EB;
-}
-
-#intro, #sign_up {
-    display: table-cell;
-}
-
-#intro, #sign_up {
-    font-weight: bolder;
-    font-size: xx-large;
-}
-
 #intro > ul {
     font-weight: normal;
     font-size: large;
@@ -57,70 +16,16 @@ body {
     font-size: small;
 }
 
-#sign_up > form {
-    font-weight: normal;
-    font-size: medium;
+#sign_up, #login {
 }
 
-#sign_up > form > input,
-#sign_up > form > span {
-    float: left;
+#login_email, #login_passwd {
+    width: auto;
 }
 
 @media screen and (min-width:600px) {
-    #nav, #content {
-        display: table-cell;
-    }
-
-    #nav {
-        width: 15%;
-    }
 }
 @media screen and (max-width:599px) {
-    #nav {
-        display: inline
-    }
-}
-
-#logo {
-    @extend .op-table-cell;
-
-    text-align: left;
-    font-weight: bolder;
-    font-size: 500%;
-    color: white;
-    padding: 5px;
-
-    width: auto;
-    max-width: 25%;
-}
-
-#logo span {
-    text-decoration: underline;
-}
-
-.login {
-    //float: right;
-}
-
-#oauth_login {
-    //float: right;
-}
-
-#login_main {
-    width: auto;
-    max-width: 55%;
-    height: 100%;
-
-    padding: 15px;
-    overflow: hidden;
-
-    font-weight: bolder;
-    font-size: large;
-    color: white;
-
-    position: absolute;
-    right: 0px;
 }
 
 .dev {
