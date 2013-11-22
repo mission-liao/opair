@@ -1,13 +1,13 @@
-"""create user table
+"""init user table
 
-Revision ID: 265b89be971d
+Revision ID: 10e75f133658
 Revises: None
-Create Date: 2013-11-12 16:38:34.708469
+Create Date: 2013-11-20 18:05:23.759566
 
 """
 
 # revision identifiers, used by Alembic.
-revision = '265b89be971d'
+revision = '10e75f133658'
 down_revision = None
 
 from alembic import op
@@ -29,10 +29,12 @@ def upgrade_engine1():
     op.create_table(
         'User',
         sa.Column('id', sa.Integer, primary_key=True),
-        sa.Column('email', sa.String(255), unique=True),
-        sa.Column('gender', sa.Enum('male', 'female', 'bi', 'none', name='gender_type')),
-        sa.Column('join_time', sa.DateTime()),
-        sa.Column('b_date', sa.Date())
+        sa.Column('Email', sa.String(255), unique=True),
+        sa.Column('Passwd', sa.String(64)),
+        sa.Column('Gender', sa.Enum('male', 'female', 'bi', 'none', name='gender_type')),
+        sa.Column('joinTime', sa.DateTime()),
+        sa.Column('bDate', sa.Date()),
+        sa.Column('isActivate', sa.Boolean, default=False)
     )
 
 def downgrade_engine1():
