@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="css/main.css">
         <!-- endbuild -->
   </head>
-  <body class="container">
+  <body>
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -25,17 +25,20 @@
       <script src="bower_components/json3/lib/json3.min.js"></script>
     <![endif]-->
 
-    <div class="row">
-      <div class="dev col-lg-4">O<span>Pair</span></div>
-      <div class="dev col-lg-8" ng-include="'views/login.html'"></div>
+    <div id="header" class="container header-fix-height">
+      <div class="row">
+        <div id="logo" class="dev col-lg-4">O<span>Pair</span></div>
+        <div class="dev col-lg-8" ng-include="'views/login.html'"></div>
+      </div>
     </div>
 
-    <div class="row" ng-view="">
-    </div>
-
-    <div id="footer" class="row">
-      <div class="dev col-lg-12">
-        <h1>footer</h1>
+    <div id="content" class="container">
+      <div class="op-row" ng-view="">
+      </div>
+      <div id="footer" class="row">
+        <div class="dev col-lg-12">
+          <h1>footer</h1>
+        </div>
       </div>
     </div>
 

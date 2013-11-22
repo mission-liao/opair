@@ -1,10 +1,50 @@
 $iconSpritePath: "../images/glyphicons-halflings.png";
 $iconWhiteSpritePath: "../images/glyphicons-halflings-white.png";
 
+@import "override.scss";
 @import "bootstrap-sass/lib/bootstrap";
 @import "var.scss";
 
 /* Put your CSS here */
+body {
+    background-color: black;
+}
+
+#logo {
+    text-align: left;
+    font-weight: bolder;
+    font-size: 335%;
+    color: #BBB;
+    padding: 5px;
+}
+
+#logo > span {
+    text-decoration: underline;
+}
+
+#header {
+    background-color: #400000;
+    top: 0px;
+}
+
+#footer {
+    background-color: #400040;
+}
+
+#content {
+    overflow: scroll;
+}
+
+#header {
+    width: 99%;
+    margin-left: auto;
+    margin-right: auto;
+
+    z-index: 6;
+
+    position: fixed;
+}
+
 #intro > ul {
     font-weight: normal;
     font-size: large;
@@ -17,19 +57,11 @@ $iconWhiteSpritePath: "../images/glyphicons-halflings-white.png";
 }
 
 #sign_up, #login {
+    float: right;
 }
 
-#login_email, #login_passwd {
+#sign_up, #login_email, #login_passwd {
     width: auto;
 }
 
-@media screen and (min-width:600px) {
-}
-@media screen and (max-width:599px) {
-}
 
-.dev {
-    border-width: 2px;
-    border-style: double;
-    border-color: red;
-}

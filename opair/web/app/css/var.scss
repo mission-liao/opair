@@ -8,6 +8,12 @@ $color-ggl-red:       #E46145;
 // color used by ourself
 $color-fg-default:    #FF7538;
 
+// padding for grid
+$grid_gutter: 5px;
+
+// height of header
+$header_height: 81px;
+
 // buttons
 .btn-facebook {
     @include button-variant(white, $color-fb-blue, $btn-default-border);
@@ -21,3 +27,18 @@ $color-fg-default:    #FF7538;
     @include button-variant(white, $color-fb-green, $btn-default-border);
 }
 
+.op-row{
+    @extend .row;
+
+    margin-bottom: $grid_gutter;
+}
+
+.dev {
+    border-width: 2px;
+    border-style: double;
+    border-color: red;
+}
+
+.header-fix-height {
+    height: $header_height;
+}
