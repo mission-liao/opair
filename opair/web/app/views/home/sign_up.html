@@ -1,0 +1,35 @@
+<div class="row"><div class="dev col-lg-12">
+  <br><br>Catch up with the whole world !
+  <br><br>
+</div></div>
+<div class="row">
+  <form name="sign_up" class="dev col-lg-12 form" ng-controller="ctrl_signUp" ng-submit="submit_user()">
+    <input type="email" name="email" class="form-control" placeholder="Email address" ng-model="email" required>
+      <!--
+      <div class="alert alert-warning" ng-show="sign_up.email.$error.required">
+        Email required!</div>
+      <div class="alert alert-warning" ng-show="sign_up.email.$error.email">
+        Not a valid email!</div>
+      <div class="alert alert-warning" ng-show="submit_failed">
+        {{ error_message }}</div>
+      -->
+    <input name="login_psswd" type="password" class="form-control" placeholder="Your Password" ng-controller="ctrl_psswd" ng-model="$parent.login_passwd">
+      <!--
+      <span class="alert">
+        The password is {{ strength }} !</span>
+      -->
+    <div class="btn-group">
+      <button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
+        {{ genders[gender_sel] }} <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <li><a ng-click="select_gender(1)">{{ genders[1] }}</a></li>
+        <li><a ng-click="select_gender(2)">{{ genders[2] }}</a></li>
+        <li><a ng-click="select_gender(3)">{{ genders[3] }}</a></li>
+      </ul>
+    </div>
+    <input type="date" value="Birthday" class="form-control" placeholder="Birthday" ng-model="bday" required>
+    <input type="submit" value="Sign Up" class="btn btn-login form-control" ng-disabled="!sign_up.$valid">
+  </form>
+</div></div>
+
