@@ -7,9 +7,9 @@ define(["angular"], function (ng) {
                 $injector.invoke(c, this, {"$scope": $scope, "$http": $http});
             });
         }])
-        .controller("ctrl_signUp", ["$scope", "$injector", function ($scope, $injector) {
+        .controller("ctrl_signUp", ["$scope", "$injector", "Restangular", function ($scope, $injector, Restangular) {
             require(["controllers/sign_up"], function (c) {
-                $injector.invoke(c, this, {"$scope": $scope});
+                $injector.invoke(c, this, {"$scope": $scope, "Restangular": Restangular});
             });
         }])
         .controller("ctrl_psswd", ["$scope", "$injector", "$element", function ($scope, $injector, $elm) {

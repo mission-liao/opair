@@ -2,29 +2,31 @@
 
 define([
     "angular",
-    "angular_resource",
     "angular_cookies",
     "angular_sanitize",
     "angular_route",
+    "restangular",
     "controllers/index",
-    "res/index"
+    "services/index",
 ], function (angular) {
     return angular.module("webApp", [
         "ngCookies",
-        "ngResource",
         "ngSanitize",
         "ngRoute",
+        "restangular",
         "webApp.controllers",
-        "webApp.res"
+        "webApp.services"
     ])
-    .config(function ($routeProvider) {
+    .config(function ($routeProvider, RestangularProvider) {
         $routeProvider
         .when("/", {
             templateUrl: "views/home.html",
         })
         .otherwise({
-            redirectTo: '/'
+            redirectTo: "/"
         });
+
+        RestangularProvider.setBaseUrl("/p");
     });
 });
 
