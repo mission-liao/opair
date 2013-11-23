@@ -12,7 +12,7 @@ $color-fg-default:    #FF7538;
 $grid_gutter: 5px;
 
 // height of header
-$header_height: 81px;
+$header_height: 82px;
 
 // buttons
 .btn-facebook {
@@ -30,6 +30,7 @@ $header_height: 81px;
 .op-row{
     @extend .row;
 
+    margin-top: $grid_gutter;
     margin-bottom: $grid_gutter;
 }
 
@@ -42,3 +43,10 @@ $header_height: 81px;
 .header-fix-height {
     height: $header_height;
 }
+
+.content {
+    background-color: #34495E;
+
+    padding-bottom: 10px;
+}
+

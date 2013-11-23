@@ -8,13 +8,13 @@ $iconWhiteSpritePath: "../images/glyphicons-halflings-white.png";
 /* Put your CSS here */
 body {
     background-color: black;
+    color: white;
 }
 
 #logo {
     text-align: left;
     font-weight: bolder;
     font-size: 335%;
-    color: #BBB;
     padding: 5px;
 }
 
@@ -23,16 +23,16 @@ body {
 }
 
 #header {
-    background-color: #400000;
+    background-color: black;
     top: 0px;
 }
 
 #footer {
-    background-color: #400040;
+    background-color: #9B59B6;
 }
 
-#content {
-    overflow: scroll;
+#view {
+    background-color: #2C3E50;
 }
 
 #header {
@@ -56,7 +56,7 @@ body {
     font-size: small;
 }
 
-#sign_up, #login {
+#login {
     float: right;
 }
 
