@@ -1,16 +1,16 @@
-"use strict";
+define(['angular'], function () {
+    'use strict';
 
-define(["angular"], function (ng) {
-    return ["$scope", "$http", function ($scope, $http) {
+    return ['$scope', '$http', function ($scope) {
         // TODO: check if we alreay logined.
 
-        $scope.state = "default";
-        $scope.oauth = function (provider) {
+        $scope.state = 'default';
+        $scope.oauth = function () {
             // TODO: await for server side oauth
-        }
+        };
 
         $scope.login = function () {
-        }
+        };
 
         $scope.$apply();
     }];

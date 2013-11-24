@@ -103,13 +103,40 @@ module.exports = function (grunt) {
       server: '.tmp'
     },
     jshint: {
-      options: {
-        jshintrc: '.jshintrc'
+      all: {
+        options: {
+          'node': true,
+          'browser': true,
+          'esnext': true,
+          'bitwise': true,
+          'camelcase': true,
+          'curly': true,
+          'eqeqeq': true,
+          'immed': true,
+          'indent': 4,
+          'latedef': true,
+          'newcap': true,
+          'noarg': true,
+          'quotmark': 'single',
+          'regexp': true,
+          'undef': true,
+          'unused': true,
+          'strict': false,
+          'trailing': true,
+          'smarttabs': true,
+          'globals': {
+            'angular': false,
+            'define': false,
+          },
+
+          '-W015': true,
+          '-W106': true,
+        },
+        src: [
+          'Gruntfile.js',
+          '<%= yeoman.app %>/js/{,**/}*.js'
+        ]
       },
-      all: [
-        'Gruntfile.js',
-        '<%= yeoman.app %>/js/{,*/}*.js'
-      ]
     },
     coffee: {
       options: {
@@ -211,13 +238,13 @@ module.exports = function (grunt) {
         options: {
           modules: [
             {
-              name: "main"
+              name: 'main'
             }
           ],
           baseUrl: '<%= yeoman.app %>/js',
           mainConfigFile: 'app/js/main.js',
           dir: '<%= yeoman.dist %>/js',
-          optimize: "none",
+          optimize: 'none',
           removeCombined: true
         }
       },

@@ -1,32 +1,32 @@
-"use strict";
-
 define([
-    "angular",
-    "angular_cookies",
-    "angular_sanitize",
-    "angular_route",
-    "restangular",
-    "controllers/index",
-    "services/index",
+    'angular',
+    'angular_cookies',
+    'angular_sanitize',
+    'angular_route',
+    'restangular',
+    'controllers/index',
+    'services/index',
 ], function (angular) {
-    return angular.module("webApp", [
-        "ngCookies",
-        "ngSanitize",
-        "ngRoute",
-        "restangular",
-        "webApp.controllers",
-        "webApp.services"
+    'use strict';
+
+    return angular.module('webApp', [
+        'ngCookies',
+        'ngSanitize',
+        'ngRoute',
+        'restangular',
+        'webApp.controllers',
+        'webApp.services'
     ])
     .config(function ($routeProvider, RestangularProvider) {
         $routeProvider
-        .when("/", {
-            templateUrl: "views/home.html",
+        .when('/', {
+            templateUrl: 'views/home.html',
         })
         .otherwise({
-            redirectTo: "/"
+            redirectTo: '/'
         });
 
-        RestangularProvider.setBaseUrl("/p");
+        RestangularProvider.setBaseUrl('/p');
     });
 });
 
