@@ -14,6 +14,12 @@ $grid_gutter: 5px;
 // height of header
 $header_height: 82px;
 
+// content color
+$color-view: #2C3E50;
+$color-footer: #9B59B6;
+$color-content: #34495E;
+
+
 // buttons
 .btn-facebook {
     @include button-variant(white, $color-fb-blue, $btn-default-border);
@@ -35,9 +41,9 @@ $header_height: 82px;
 }
 
 .dev {
-    border-width: 2px;
-    border-style: double;
-    border-color: red;
+//    border-width: 2px;
+//    border-style: double;
+//    border-color: red;
 }
 
 .header-fix-height {
@@ -45,8 +51,12 @@ $header_height: 82px;
 }
 
 .content {
-    background-color: #34495E;
-
+    background-color: $color-content;
     padding-bottom: 10px;
 }
 
+.warning-box {
+    background-color: $color-view;
+    color: #E74C3C;
+    height: $input-height-base;
+}

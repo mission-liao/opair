@@ -6,24 +6,12 @@
   <form id="sign_up" name="sign_up" class="dev op-col-12 form" ng-controller="ctrl_signUp" ng-submit="submit_user()">
     <div class="form-group">
       <label>Email</label>
-      <input type="email" name="email" class="form-control" placeholder="Email address" ng-model="email" required>
+      <input type="email" name="email" class="form-control" placeholder="Email address" ng-model="email" ng-blur="validate()" required>
     </div>
-      <!--
-      <div class="alert alert-warning" ng-show="sign_up.email.$error.required">
-        Email required!</div>
-      <div class="alert alert-warning" ng-show="sign_up.email.$error.email">
-        Not a valid email!</div>
-      <div class="alert alert-warning" ng-show="submit_failed">
-        {{ error_message }}</div>
-      -->
     <div class="form-group">
       <label>Password</label>
-      <input name="login_psswd" type="password" class="form-control" placeholder="Your Password" ng-controller="ctrl_psswd" ng-model="$parent.login_passwd">
+      <input name="login_psswd" type="password" class="form-control" placeholder="Your Password" ng-model="$parent.login_passwd">
     </div>
-      <!--
-      <span class="alert">
-        The password is {{ strength }} !</span>
-      -->
     <div class="form-group"><div class="btn-group">
       <label>Gender</label>
       <button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
@@ -37,8 +25,19 @@
     </div></div>
     <div class="form-group">
       <label>B-Day</label>
-      <input type="date" value="Birthday" class="form-control" placeholder="Birthday" ng-model="bday" required>
+      <input type="date" value="Birthday" class="form-control" placeholder="Birthday" ng-model="bday" ng-blur="validate()" required>
     </div>
-    <input type="submit" value="Sign Up" class="btn btn-login form-control" ng-disabled="!sign_up.$valid">
+    <div class="row">
+      <div class="col-lg-3">
+        <input type="submit" value="Sign Up" class="btn btn-login form-control" ng-disabled="!sign_up.$valid">
+      </div>
+      <div class="col-lg-9 warning-box">
+        <p>
+          <span ng-show="sign_up.email.$error.required">Email Required, </span>
+          <span ng-show="sign_up.email.$error.email">Not a valid email, </span>
+          <span ng-show="submit_failed">{{ err_msg }}</span>
+        </p>
+      </div>
+    </div>
   </form>
 </div></div>

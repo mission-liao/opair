@@ -3,7 +3,7 @@ define(['angular'], function () {
 
     return ['$scope', 'PostRestangular', function ($scope, PostRestangular) {
         $scope.submit_failed = false;
-        $scope.error_message = '';
+        $scope.err_msg = '';
 
         $scope.submit_user = function () {
             $scope.submit_failed = false;
@@ -16,10 +16,19 @@ define(['angular'], function () {
             }).then(
                 null,
                 function(err) {
+                    if ('data' in err && typeof(err.data) == 'object' && 'error' in err.data) {
+                        $scope.err_msg = err.data.error;
+                    } else {
+                        $scope.err_msg = 'submit failed: http[' + err.status + ']';
+                    }
                     $scope.submit_failed = true;
-                    $scope.error_message = err.data.error;
                 }
             );
+        };
+
+        // Email
+        $scope.validate = function () {
+            
         };
 
         // gender
@@ -30,7 +39,6 @@ define(['angular'], function () {
                 throw 'invalid index for gender [' + idx + ']';
             }
             $scope.gender_sel = idx;
-            console.log($scope.bday);
         };
 
         $scope.$apply();
