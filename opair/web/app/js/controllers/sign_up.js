@@ -1,4 +1,4 @@
-define(['angular'], function () {
+define(['angular'], function (ng) {
     'use strict';
 
     return ['$scope', 'PostRestangular', function ($scope, PostRestangular) {
@@ -16,7 +16,7 @@ define(['angular'], function () {
             }).then(
                 null,
                 function(err) {
-                    if ('data' in err && typeof(err.data) == 'object' && 'error' in err.data) {
+                    if ('data' in err && typeof(err.data) === 'object' && 'error' in err.data) {
                         $scope.err_msg = err.data.error;
                     } else {
                         $scope.err_msg = 'submit failed: http[' + err.status + ']';
@@ -26,10 +26,18 @@ define(['angular'], function () {
             );
         };
 
-        // Email
-        $scope.validate = function () {
-            
-        };
+        // Password
+        $scope.login_psswd = '';
+        $scope.show_password_warning = false;
+        $scope.$watch('login_psswd', function () {
+            if (ng.isDefined($scope.login_psswd)) {
+                if ($scope.login_psswd.length > 8) {
+                    $scope.show_password_warning = false;
+                } else {
+                    $scope.show_password_warning = true;
+                }
+            }
+        });
 
         // gender
         $scope.gender_sel = 0;

@@ -11,10 +11,5 @@ define(['angular'], function (ng) {
             require(['controllers/sign_up'], function (c) {
                 $injector.invoke(c, this, {'$scope': $scope, 'Restangular': Restangular});
             });
-        }])
-        .controller('ctrl_psswd', ['$scope', '$injector', '$element', function ($scope, $injector, $elm) {
-            require(['controllers/login/psswd'], function (c) {
-                $injector.invoke(c, this, {'$scope': $scope, '$elm': $elm});
-            });
         }]);
 });

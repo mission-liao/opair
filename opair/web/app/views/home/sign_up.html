@@ -10,7 +10,7 @@
     </div>
     <div class="form-group">
       <label>Password</label>
-      <input name="login_psswd" type="password" class="form-control" placeholder="Your Password" ng-model="$parent.login_passwd">
+      <input name="login_psswd" type="password" class="form-control" placeholder="Your Password" ng-model="login_psswd">
     </div>
     <div class="form-group"><div class="btn-group">
       <label>Gender</label>
@@ -35,6 +35,7 @@
         <p>
           <span ng-show="sign_up.email.$error.required">Email Required, </span>
           <span ng-show="sign_up.email.$error.email">Not a valid email, </span>
+          <span ng-show="show_password_warning">Password is weak, </span>
           <span ng-show="submit_failed">{{ err_msg }}</span>
         </p>
       </div>
