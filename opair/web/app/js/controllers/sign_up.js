@@ -8,12 +8,13 @@ define(['angular'], function (ng) {
 
         $scope.submit_user = function () {
             $scope.submit_failed = false;
-            $scope.error_message = '';
+            $scope.err_msg = '';
 
             var Users = PostRestangular.all('users');
             Users.post({
                 email: $scope.email,
-                passwd: $scope.login_passwd
+                passwd: $scope.login_psswd,
+                gender: $scope.genders[$scope.gender_sel],
             }).then(
                 null,
                 function(err) {
@@ -45,7 +46,7 @@ define(['angular'], function (ng) {
         $scope.gender_sel = 0;
         $scope.genders = ['Gender', 'Male', 'Female', 'Bisexual'];
         $scope.select_gender = function (idx) {
-            if (idx < 0 || idx >= $scope.genders.length) {
+            if (idx <= 0 || idx >= $scope.genders.length) {
                 throw 'invalid index for gender [' + idx + ']';
             }
             $scope.gender_sel = idx;
