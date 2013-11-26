@@ -10,7 +10,7 @@ define(['angular'], function (ng) {
                 inj.invoke(c, pThis, param);
             });
         }
-    }
+    };
 
     return ng.module('webApp.controllers', [])
         .controller('ctrl_login', ['service_JSLoad', '$scope', '$injector', '$http', function (JSL, $scope, $injector, $http) {
