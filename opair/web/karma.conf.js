@@ -7,7 +7,7 @@ module.exports = function(config) {
     basePath: '',
 
     // testing framework to use (jasmine/mocha/qunit/...)
-    frameworks: ['jasmine'],
+    frameworks: ['jasmine', 'requirejs'],
 
     // list of files / patterns to load in the browser
     files: [
@@ -29,12 +29,12 @@ module.exports = function(config) {
       {pattern: 'app/bower_components/requirejs-domready/domReady.js', included: false},
       {pattern: 'app/bower_components/lodash/dist/lodash.compat.min.js', included: false},
 
+      // test-spec
+      {pattern: 'test/mock/**/*.js', included: false},
+      {pattern: 'test/spec/**/*.js', include: false},
+
       // config-file for requirejs when testing
       'test/main.js',
-
-      // test-spec
-      'test/mock/**/*.js',
-      'test/spec/**/*.js'
     ],
 
     // list of files / patterns to exclude

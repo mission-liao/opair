@@ -10,7 +10,9 @@ require.config({
         bootstrap: '../bower_components/bootstrap-sass/js',
         requirejs_domready: '../bower_components/requirejs-domready/domReady',
         restangular: '../bower_components/restangular/dist/restangular.min',
-        lodash: '../bower_components/lodash/dist/lodash.compat.min'
+        lodash: '../bower_components/lodash/dist/lodash.compat.min',
+
+        test: '../../test',
     },
 
     shim: {
@@ -39,7 +41,16 @@ require.config({
     },
 
     deps: [ 
-      'app'
+      'app',
+
+      // application js, all loaded in sync
+      'controllers/sign_up',
+      'controllers/login/login',
+
+      // testing js, all loaded in sync
+      'test/spec/controllers/sign_up',
     ],
+
+    callback: window.__karma__.start
 });
 

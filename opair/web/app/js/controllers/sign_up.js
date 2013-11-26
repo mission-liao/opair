@@ -2,6 +2,7 @@ define(['angular'], function (ng) {
     'use strict';
 
     return ['$scope', 'PostRestangular', function ($scope, PostRestangular) {
+
         $scope.submit_failed = false;
         $scope.err_msg = '';
 
@@ -29,7 +30,7 @@ define(['angular'], function (ng) {
         // Password
         $scope.login_psswd = '';
         $scope.show_password_warning = false;
-        $scope.$watch('login_psswd', function () {
+        $scope.check_psswd_strength = function () {
             if (ng.isDefined($scope.login_psswd)) {
                 if ($scope.login_psswd.length > 8) {
                     $scope.show_password_warning = false;
@@ -37,7 +38,8 @@ define(['angular'], function (ng) {
                     $scope.show_password_warning = true;
                 }
             }
-        });
+        };
+        $scope.$watch('login_psswd', $scope.check_psswd_strength);
 
         // gender
         $scope.gender_sel = 0;
