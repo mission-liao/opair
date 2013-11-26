@@ -20,7 +20,7 @@ define([
     .config(function ($routeProvider, RestangularProvider) {
         $routeProvider
         .when('/', {
-            templateUrl: 'views/home.html',
+            templateUrl: 'views/intro.html',
         })
         .otherwise({
             redirectTo: '/'
