@@ -45,7 +45,7 @@ require.config({
 
       // application js, all loaded in sync
       'controllers/sign_up',
-      'controllers/login/login',
+      'controllers/login',
 
       // testing js, all loaded in sync
       'test/spec/controllers/sign_up',

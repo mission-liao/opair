@@ -1,10 +1,10 @@
 from __future__ import absolute_import
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, current_app
 from flask.views import MethodView
 from srv import login_mgr, db, model
 from sqlalchemy.exc import IntegrityError
 
-import datetime
+from datetime import datetime
 
 api_user = Blueprint('user', __name__)
 
@@ -28,13 +28,17 @@ class UserView(MethodView):
         err = ""
         # try to create a new record in database
         data = request.get_json()
-        # TODO: use my bdate temporary
-        # TODO: gender
+
+        # convert date string to date object
+        d = datetime.strptime(data['bday'], '%Y-%m-%d')
+        # create User object
+        # TODO: input validation
         u = model.User(
             data['email'],
-            datetime.date(1980, 10, 4),
+            d.date(),
             data['passwd'],
-            datetime.datetime.now()
+            datetime.now(),
+            data['gender']
         )
 
         db.session.add(u)

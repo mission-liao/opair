@@ -18,9 +18,9 @@
         {{ genders[gender_sel] }} <span class="caret"></span>
       </button>
       <ul class="dropdown-menu" role="menu">
-        <li><a ng-click="select_gender(1)">{{ genders[1] }}</a></li>
-        <li><a ng-click="select_gender(2)">{{ genders[2] }}</a></li>
-        <li><a ng-click="select_gender(3)">{{ genders[3] }}</a></li>
+        <li ng-repeat="gender in genders.slice(1)">
+          <a ng-click="select_gender($index+1)">{{ gender }}</a>
+        </li>
       </ul>
     </div></div>
     <div class="form-group">

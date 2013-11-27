@@ -14,7 +14,7 @@ define(['angular'], function (ng) {
 
     return ng.module('webApp.controllers', [])
         .controller('ctrl_login', ['service_JSLoad', '$scope', '$injector', '$http', function (JSL, $scope, $injector, $http) {
-            _invoke('controllers/login/login', this, {'$scope': $scope, '$http': $http}, $injector, JSL);
+            _invoke('controllers/login', this, {'$scope': $scope, '$http': $http}, $injector, JSL);
         }])
         .controller('ctrl_signUp', ['service_JSLoad', '$scope', '$injector', 'Restangular', function (JSL, $scope, $injector, Restangular) {
             _invoke('controllers/sign_up', this, {'$scope': $scope, 'Restangular': Restangular}, $injector, JSL);

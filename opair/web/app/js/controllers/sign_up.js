@@ -15,6 +15,7 @@ define(['angular'], function (ng) {
                 email: $scope.email,
                 passwd: $scope.login_psswd,
                 gender: $scope.genders[$scope.gender_sel],
+                bday: $scope.bday,
             }).then(
                 null,
                 function(err) {
@@ -44,7 +45,7 @@ define(['angular'], function (ng) {
 
         // gender
         $scope.gender_sel = 0;
-        $scope.genders = ['Gender', 'Male', 'Female', 'Bisexual'];
+        $scope.genders = ['Gender', 'male', 'female', 'bisexual', 'none'];
         $scope.select_gender = function (idx) {
             if (idx <= 0 || idx >= $scope.genders.length) {
                 throw 'invalid index for gender [' + idx + ']';

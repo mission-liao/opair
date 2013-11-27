@@ -20,7 +20,6 @@ describe('Sign_Up controller', function () {
         expect(scope.err_msg).toBe('');
         // gender
         expect(scope.gender_sel).toBe(0);
-        expect(scope.genders.length).toBe(4);
     });
 
     it('should show warning message when password is weak', function () {
