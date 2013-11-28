@@ -65,13 +65,12 @@ describe('Sign Up controller, submit to server part', function () {
         httpB.verifyNoOutstandingRequest();
     });
 
-    /*
     it ('show http status when no data.error', function () {
         // init status should be ok.
         expect(scope.submit_failed).toBe(false);
         expect(scope.err_msg).toBe('');
 
-        httpB.expectPOST('/p/users/', undefined).respond(502, '');
+        httpB.expectPOST('/r/users/', undefined).respond(502, '');
 
         // trigger user submittion
         scope.submit_user();
@@ -82,14 +81,14 @@ describe('Sign Up controller, submit to server part', function () {
         expect(scope.submit_failed).toBe(true);
         expect(scope.err_msg).toBe('submit failed: http[502]');
     });
-    */
+
     it ('show error message when data.error exists', function () {
         // init status should be ok.
         expect(scope.submit_failed).toBe(false);
         expect(scope.err_msg).toBe('');
 
         var msg = 'expected failure, never mind.';
-        httpB.expectPOST('/p/users/', undefined).respond(502, {'error': msg});
+        httpB.expectPOST('/r/users/', undefined).respond(502, {'error': msg});
 
         // trigger user submittion
         scope.submit_user();

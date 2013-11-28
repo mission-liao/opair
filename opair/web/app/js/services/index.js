@@ -2,8 +2,15 @@ define(['angular'], function (ng) {
     'use strict';
 
     return ng.module('webApp.services', [])
-        .factory('PostRestangular', function (Restangular) {
+        .factory('RRestangular', function (Restangular) {
             return Restangular.withConfig(function (RestangularConfigurer) {
+                RestangularConfigurer.setBaseUrl('/r');
+                RestangularConfigurer.setRequestSuffix('/');
+            });
+        })
+        .factory('ApiRestangular', function (Restangular) {
+            return Restangular.withConfig(function (RestangularConfigurer) {
+                RestangularConfigurer.setBaseUrl('/p');
                 RestangularConfigurer.setRequestSuffix('/');
             });
         })

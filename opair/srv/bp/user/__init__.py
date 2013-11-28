@@ -1,24 +1,64 @@
 from __future__ import absolute_import
 from flask import Blueprint, request, jsonify, current_app
 from flask.views import MethodView
-from srv import login_mgr, db, model
+from flask.ext.login import login_user
+from srv import login_mgr, db, model, app, login_serializer
 from sqlalchemy.exc import IntegrityError
-
 from datetime import datetime
+
+import hashlib
 
 api_user = Blueprint('user', __name__)
 
-@login_mgr.user_loader
-def load_user(uid):
-    return model.User.get(uid)
+
+def hash_password(password):
+    m = hashlib.sha1()
+    m.update(password)
+    m.update(app.secret_key)
+    return m.hexdigest()
+
+
+@login_mgr.token_loader
+def load_token(token):
+    """
+    decrypt token and load User
+    """
+    current_app.logger.error('mission 4')
+    max_age = app.config["REMEMBER_COOKIE_DURATION"].total_seconds()
+
+    data = login_serializer.loads(token, max_age=max_age)
+    u = model.User.query.filter_by(email=data[0])
+
+    if u and data[1] == u.password:
+        return u
+    return None
+
+
+class LoginView(MethodView):
+    def post(self):
+        """
+        a login attempt
+        """
+        # try to create a new record in database
+        data = request.get_json()
+
+        u = model.User.query.filter_by(email=data['email']).first()
+        if u:
+            if u.password == hash_password(data['password']):
+                login_user(u)
+                return jsonify(id=u.id, error=""), 200
+            else:
+                return jsonify(error="Password Wrong"), 401
+
+        return jsonify("User not exists"), 404
+ 
 
 class UserView(MethodView):
     def get(self):
         """
-        login function
+        get a specific user resource
         """
-        # TODO: valid what users input
-        return "", 404
+        pass
 
     def post(self):
         """
@@ -36,7 +76,7 @@ class UserView(MethodView):
         u = model.User(
             data['email'],
             d.date(),
-            data['passwd'],
+            hash_password(data['password']),
             datetime.now(),
             data['gender']
         )
@@ -56,5 +96,7 @@ class UserView(MethodView):
 
         return jsonify(id=u.id, error=err), status_code
 
-api_user.add_url_rule("/p/users/", view_func=UserView.as_view("api-user"), methods=["GET", "POST", ])
+
+api_user.add_url_rule("/r/users/", view_func=UserView.as_view("res-user"), methods=["GET", "POST", ])
+api_user.add_url_rule("/p/login/", view_func=LoginView.as_view("api-login"), methods=["POST", ])
 

@@ -29,9 +29,9 @@ def upgrade_engine1():
     op.create_table(
         'User',
         sa.Column('id', sa.Integer, primary_key=True),
-        sa.Column('Email', sa.String(255), unique=True),
-        sa.Column('Passwd', sa.String(64)),
-        sa.Column('Gender', sa.Enum('male', 'female', 'bisexual', 'none', name='gender_type')),
+        sa.Column('email', sa.String(255), unique=True),
+        sa.Column('password', sa.String(64)),
+        sa.Column('gender', sa.Enum('male', 'female', 'bisexual', 'none', name='gender_type')),
         sa.Column('joinTime', sa.DateTime()),
         sa.Column('bDate', sa.Date()),
         sa.Column('isActivate', sa.Boolean, default=False)

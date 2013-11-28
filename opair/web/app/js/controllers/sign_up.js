@@ -1,7 +1,7 @@
 define(['angular'], function (ng) {
     'use strict';
 
-    return ['$scope', 'PostRestangular', function ($scope, PostRestangular) {
+    return ['$scope', 'RRestangular', function ($scope, RRestangular) {
 
         $scope.submit_failed = false;
         $scope.err_msg = '';
@@ -10,10 +10,10 @@ define(['angular'], function (ng) {
             $scope.submit_failed = false;
             $scope.err_msg = '';
 
-            var Users = PostRestangular.all('users');
+            var Users = RRestangular.all('users');
             Users.post({
                 email: $scope.email,
-                passwd: $scope.login_psswd,
+                password: $scope.login_psswd,
                 gender: $scope.genders[$scope.gender_sel],
                 bday: $scope.bday,
             }).then(

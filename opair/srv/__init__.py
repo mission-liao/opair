@@ -2,9 +2,13 @@ from __future__ import absolute_import
 from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.login import LoginManager
+from itsdangerous import URLSafeTimedSerializer
 
 app = Flask(__name__)
 app.config.from_object('srv.config')
+
+# session encrypt/decrypt
+login_serializer = URLSafeTimedSerializer(app.secret_key)
 
 # init logger
 import logging

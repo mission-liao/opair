@@ -17,7 +17,7 @@ define([
         'webApp.controllers',
         'webApp.services'
     ])
-    .config(function ($routeProvider, RestangularProvider) {
+    .config(function ($routeProvider) {
         $routeProvider
         .when('/', {
             templateUrl: 'views/intro.html',
@@ -25,8 +25,6 @@ define([
         .otherwise({
             redirectTo: '/'
         });
-
-        RestangularProvider.setBaseUrl('/p');
     });
 });
 
