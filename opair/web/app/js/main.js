@@ -37,8 +37,6 @@ require.config({
             exports: '$.fn.popover'
         },
     },
-
-    enforceDefine: true
 });
 
 // refer to http://docs.angularjs.org/guide/bootstrap
