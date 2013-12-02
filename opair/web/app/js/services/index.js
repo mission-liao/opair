@@ -27,6 +27,28 @@ define(['angular'], function (ng) {
             this.is_sync = function () {
                 return this.sync_load;
             };
+        })
+        .factory('_err_interceptor', function ($q, $location, $rootScope) {
+            return {
+                'responseError': function (response) {
+                    if (response.status == 401) {
+                        // TODO: redirect to a specific login page
+                        $location.path('/login');
+                    } else if (response.status >= 500 && response.status < 600) {
+                        // cache the response
+                        $rootScope.http_response = response;
+                        // server side error, redirect to error page.
+                        $location.path('/error');
+                    }
+
+                    // always continue to process this response.
+                    // don't eat it.
+                    return $q.reject(response);
+                }
+            };
+        })
+        .config(function ($httpProvider) {
+            $httpProvider.interceptors.push('_err_interceptor');
         });
 });
 
