@@ -1,5 +1,5 @@
 from __future__ import absolute_import
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, current_app
 from flask.views import MethodView
 from flask.ext.login import login_user, login_required, current_user
 from srv import login_mgr, db, model, app, login_serializer
@@ -26,11 +26,16 @@ def load_token(token):
     max_age = app.config["REMEMBER_COOKIE_DURATION"].total_seconds()
 
     data = login_serializer.loads(token, max_age=max_age)
-    u = model.User.query.filter_by(email=data[0])
+    u = model.User.query.filter_by(email=data[0]).first()
 
     if u and data[1] == u.password:
         return u
     return None
+
+
+@login_mgr.user_loader
+def load_user(uid):
+    return model.User.query.get(uid)
 
 
 @login_mgr.unauthorized_handler
