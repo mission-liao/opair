@@ -3,6 +3,7 @@ define([
     'angular_cookies',
     'angular_sanitize',
     'angular_route',
+    'angular_ui_router',
     'restangular',
     'controllers/index',
     'services/index',
@@ -14,26 +15,53 @@ define([
         'ngSanitize',
         'ngRoute',
         'restangular',
+        'ui.router',
 
         'webApp.controllers',
         'webApp.services',
     ])
-    .config(function ($routeProvider) {
-        $routeProvider
-        .when('/', {
-            templateUrl: 'views/home.html',
+    .config(function ($stateProvider, $urlRouterProvider) {
+        // default url is root
+        $urlRouterProvider.otherwise('/');
+
+        $stateProvider
+        .state('introduction', {
+            url: '/intro',
+            views: {
+                'top_r': {
+                    templateUrl: 'views/login/form.html'
+                },
+                'content': {
+                    templateUrl: 'views/intro.html'
+                },
+            }
         })
-        .when('/intro', {
-            templateUrl: 'views/intro.html',
+        .state('login', {
+            url: '/login',
+            views: {
+                'content': {
+                    templateUrl: 'views/login.html'
+                },
+            }
         })
-        .when('/login', {
-            templateUrl: 'views/login.html',
+        .state('home', {
+            url: '/',
+            views: {
+                'top_r': {
+                    templateUrl: 'views/login/logout.html'
+                },
+                'content': {
+                    templateUrl: 'views/home.html'
+                },
+            },
         })
-        .when('/error', {
-            templateUrl: 'views/error.html',
-        })
-        .otherwise({
-            redirectTo: '/'
+        .state('error', {
+            url: '/error',
+            views: {
+                'content': {
+                    templateUrl: 'views/error.html'
+                },
+            },
         });
     })
     .run(function ($rootScope, ApiRestangular) {

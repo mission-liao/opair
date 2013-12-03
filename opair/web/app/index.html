@@ -25,18 +25,19 @@
       <script src="bower_components/json3/lib/json3.min.js"></script>
     <![endif]-->
 
-    <div id="header" class="container header-fix-height">
+    <div id="header" class="container header-fix-height" ui-view="header">
       <div class="row">
-        <div id="logo" class="dev col-lg-4">O<span>Pair</span></div>
-        <div class="dev col-lg-8" ng-include="'views/login.html'"></div>
+        <div id="logo" class="dev col-lg-2">O<span>Pair</span></div>
+        <div id="nav_top" class="dev col-lg-6" ui-view="top"></div>
+        <div class="dev col-lg-4" ui-view="top_r"></div>
       </div>
     </div>
 
     <div class="container">
       <div class="header-fix-height"></div>
-      <div id="view" class="op-row" ng-view="">
+      <div id="view" class="op-row" ui-view="content">
       </div>
-      <div id="footer" class="row">
+      <div id="footer" class="row" ui-view="footer">
         <div class="dev col-lg-12">
           <h1>footer</h1>
         </div>

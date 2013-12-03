@@ -28,17 +28,17 @@ define(['angular'], function (ng) {
                 return this.sync_load;
             };
         })
-        .factory('_err_interceptor', function ($q, $location, $rootScope) {
+        .factory('_err_interceptor', function ($q, $state, $rootScope) {
             return {
                 'responseError': function (response) {
                     if (response.status == 401) {
                         // TODO: redirect to a specific login page
-                        $location.path('/login');
+                        $state.go('login');
                     } else if (response.status >= 500 && response.status < 600) {
                         // cache the response
                         $rootScope.http_response = response;
                         // server side error, redirect to error page.
-                        $location.path('/error');
+                        $state.go('error');
                     }
 
                     // always continue to process this response.
