@@ -17,4 +17,6 @@ SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(dbdir, 'app.db')
 REMEMBER_COOKIE_DURATION = timedelta(days=7)
 
 # debug
-DEBUG = False
+DEBUG = True 
+PROPAGATE_EXCEPTION = True
+PRESERVE_CONTEXT_ON_EXCEPTION = True
