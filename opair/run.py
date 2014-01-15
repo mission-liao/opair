@@ -22,7 +22,8 @@ if __name__ == "__main__":
     )
 
     app.run(
-        debug=True,
-        port=9001
+        port=9001,
+        use_debugger=False,
+        use_reloader=False
     )
 
