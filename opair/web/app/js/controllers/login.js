@@ -4,23 +4,31 @@ define(['angular'], function () {
     return ['$scope', 'ApiRestangular', function ($scope, ApiRestangular) {
         // TODO: check if we alreay logined.
 
+        $scope.err_msg = '';
+        $scope.user = {};
+
         $scope.oauth = function () {
             // TODO: await for server side oauth
         };
 
         $scope.login = function () {
-            var login = ApiRestangular.all('/login');
+            var login = ApiRestangular.all('login');
             login.post({
-                email: $scope.email,
-                password: $scope.login_psswd
+                email: $scope.user.email,
+                password: $scope.user.password
             }).then(
                 function (data) {
-                    console.log(data);
+                    // TODO: go to login-ed state
                 },
                 function (err) {
-                    console.log(err);
+                    // TODO: show error message
+                    $scope.err_msg = err.data.error;
                 }
             );
+        };
+
+        $scope.dismiss = function () {
+            $scope.err_msg = '';
         };
 
         $scope.$apply();

@@ -17,7 +17,8 @@ define(['angular'], function (ng) {
                 gender: $scope.genders[$scope.gender_sel],
                 bday: $scope.bday,
             }).then(
-                null,
+                function(data) {
+                },
                 function(err) {
                     if ('data' in err && typeof(err.data) === 'object' && 'error' in err.data) {
                         $scope.err_msg = err.data.error;

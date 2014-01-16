@@ -25,23 +25,15 @@ define([
         $urlRouterProvider.otherwise('/');
 
         $stateProvider
-        .state('introduction', {
-            url: '/intro',
-            views: {
-                'top_r': {
-                    templateUrl: 'views/login/form.html'
-                },
-                'content': {
-                    templateUrl: 'views/intro.html'
-                },
-            }
-        })
         .state('login', {
             url: '/login',
             views: {
                 'content': {
                     templateUrl: 'views/login.html'
                 },
+                'top_r': {
+                    templateUrl: 'views/login/form.html'
+                }
             }
         })
         .state('home', {
