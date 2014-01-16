@@ -1,5 +1,5 @@
 from __future__ import absolute_import
-from flask import Blueprint, request, jsonify, current_app
+from flask import Blueprint, request, jsonify
 from flask.views import MethodView
 from flask.ext.login import login_user, login_required, current_user
 from srv import login_mgr, db, model, app, login_serializer
@@ -60,7 +60,7 @@ class LoginView(MethodView):
             else:
                 return jsonify(error="Password Wrong"), 401
 
-        return jsonify("User not exists"), 404
+        return jsonify(error="User not exists"), 404
 
     @login_required 
     def get(self):
@@ -109,7 +109,8 @@ class UserView(MethodView):
             status_code = 409
             err = "this email already exists"
 
-        # TODO: auto perform login when new account created
+        # perform login when new account created
+        login_user(u)
 
         return jsonify(id=u.id, error=err), status_code
 
