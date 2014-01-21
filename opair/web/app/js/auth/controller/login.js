@@ -1,7 +1,7 @@
 define(['angular'], function () {
     'use strict';
 
-    return ['$scope', 'svc_common_ApiRestangular', function ($scope, ApiRestangular) {
+    return ['$scope', '$state', 'svc_common_ApiRestangular', function ($scope, $state, ApiRestangular) {
         // TODO: check if we alreay logined.
 
         $scope.err_msg = '';
@@ -18,7 +18,8 @@ define(['angular'], function () {
                 password: $scope.user.password
             }).then(
                 function (data) {
-                    // TODO: go to login-ed state
+                    // go to default state for logined-users.
+                    $state.go('user.search_topic');
                 },
                 function (err) {
                     // TODO: show error message

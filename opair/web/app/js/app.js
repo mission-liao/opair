@@ -101,8 +101,8 @@ define([
             abstract: true,
             url: '/u',
             views: {
-                'header': {
-                    templateUrl: 'view/user/header.html'
+                'logo': {
+                    templateUrl: 'view/user/logo.html'
                 },
                 'footer': {
                     templateUrl: 'view/user/footer.html'
@@ -120,7 +120,7 @@ define([
         .state('anony.sign_up', {
             url: '/sign_up',
             views: {
-                'content': {
+                'content@': {
                     templateUrl: 'view/common/auth/sign_up.html'
                 },
             },
@@ -138,14 +138,14 @@ define([
         .state('user.group', ng.copy(stateGroup))
         .state('user.profile', {
             views: {
-                'content': {
+                'content@': {
                     templateUrl: 'view/user/profile.html'
                 },
             },
         })
         .state('user.setting', {
             views: {
-                'content': {
+                'content@': {
                     templateUrl: 'view/user/setting.html'
                 },
             },
@@ -154,15 +154,7 @@ define([
         .state('user.error', ng.copy(stateError))
         ;
     })
-    .run(['$rootScope', 'svc_common_ApiRestangular', function ($rootScope, ApiRestangular) {
-
-        $rootScope.$on('$stateChangeSuccess', function (event, to, toP, from, fromP) {
-            console.log(to);
-        });
-        $rootScope.$on('$stateChangeError', function (event, to, toP, from, fromP, err) {
-        });
-
-
+    .run(['$rootScope', '$state', 'svc_common_ApiRestangular', function ($rootScope, $state, ApiRestangular) {
         // init UI state
         $rootScope.ui_state = {};
         $rootScope.ui_state.login = false;
@@ -180,6 +172,7 @@ define([
         user.get().then(
             function (data) {
                 $rootScope.user.email = data.email;
+                $state.go('user.search_topic');
             },
             function (err) {
                 $rootScope.ui_state.login = false;
