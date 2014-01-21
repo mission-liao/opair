@@ -1,20 +1,20 @@
 define(['angular'], function (ng) {
     'use strict';
 
-    return ng.module('webApp.services', [])
-        .factory('RRestangular', function (Restangular) {
+    return ng.module('svc.common', [])
+        .factory('svc_common_RRestangular', function (Restangular) {
             return Restangular.withConfig(function (RestangularConfigurer) {
                 RestangularConfigurer.setBaseUrl('/r');
                 RestangularConfigurer.setRequestSuffix('/');
             });
         })
-        .factory('ApiRestangular', function (Restangular) {
+        .factory('svc_common_ApiRestangular', function (Restangular) {
             return Restangular.withConfig(function (RestangularConfigurer) {
                 RestangularConfigurer.setBaseUrl('/p');
                 RestangularConfigurer.setRequestSuffix('/');
             });
         })
-        .service('service_JSLoad', function () {
+        .service('svc_common_JSLoad', ['$injector', function ($injector) {
             // load async by default
             this.sync_load = false;
 
@@ -23,17 +23,23 @@ define(['angular'], function (ng) {
                 this.sync_load = bSync;
             };
 
-            // get function
-            this.is_sync = function () {
-                return this.sync_load;
+            this.invoke_ = function (ctrl, pThis, param) {
+                if (this.sync_load) {
+                    var c = require(ctrl);
+                    $injector.invoke(c, pThis, param);
+                } else {
+                    require([ctrl,], function (c) {
+                        $injector.invoke(c, pThis, param);
+                    });
+                }
             };
-        })
-        .factory('_err_interceptor', function ($q, $location, $rootScope) {
+        }])
+        .factory('svc_common_errInterceptor', function ($q, $location, $rootScope) {
             return {
                 'responseError': function (response) {
                     if (response.status == 401) {
                         // TODO: redirect to a specific login page
-                        $location.path('/login');
+                        $location.path('/a/');
                     } else if (response.status >= 500 && response.status < 600) {
                         // cache the response
                         $rootScope.http_response = response;
@@ -48,7 +54,7 @@ define(['angular'], function (ng) {
             };
         })
         .config(function ($httpProvider) {
-            $httpProvider.interceptors.push('_err_interceptor');
+            $httpProvider.interceptors.push('svc_common_errInterceptor');
         });
 });
 

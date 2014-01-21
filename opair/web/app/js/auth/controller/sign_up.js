@@ -1,7 +1,7 @@
 define(['angular'], function (ng) {
     'use strict';
 
-    return ['$scope', 'RRestangular', function ($scope, RRestangular) {
+    return ['$scope', 'svc_common_RRestangular', function ($scope, RRestangular) {
 
         $scope.submit_failed = false;
         $scope.err_msg = '';
