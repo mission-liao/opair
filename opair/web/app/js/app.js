@@ -26,17 +26,6 @@ define([
         // default url is root
         $urlRouterProvider.otherwise('/');
 
-        //
-        // Shared state object
-        //
-        var stateSearchTopic = {
-            url: '/',
-            views: {
-                'content@': {
-                    templateUrl: 'view/common/topic/search.html'
-                },
-            },
-        };
         var stateSearchTopicResult = {
             url: '/q?kw',
             views: {
@@ -62,15 +51,31 @@ define([
             },
         };
         var stateAbout = {
-            url: '^/about',
+            url: '/about',
             views: {
                 'content@': {
                     templateUrl: 'view/common/about.html'
                 },
             },
         };
+        var stateContactUs = {
+            url: '/contact_us',
+            views: {
+                'content@': {
+                    templateUrl: 'view/common/contact_us.html'
+                },
+            },
+        };
+        var stateFAQ = {
+            url: '/faq',
+            views: {
+                'content@': {
+                    templateUrl: 'view/common/faq.html'
+                },
+            },
+        };
         var stateError = {
-            url: '^/error',
+            url: '/error',
             views: {
                 'content@': {
                     templateUrl: 'view/common/error.html'
@@ -86,14 +91,14 @@ define([
             abstract: true,
             url: '/a',
             views: {
-                'logo': {
-                    templateUrl: 'view/anony/logo.html'
+                'header': {
+                    templateUrl: 'view/anony/header.html'
                 },
-                'ctrl': {
-                    templateUrl: 'view/common/auth/form_login.html'
+                'header-padding': {
+                    template: '<div class="header-fix-height-82"></div>'
                 },
                 'footer': {
-                    templateUrl: 'view/anony/footer.html'
+                    templateUrl: 'view/common/footer.html'
                 },
             },
         })
@@ -101,11 +106,14 @@ define([
             abstract: true,
             url: '/u',
             views: {
-                'logo': {
-                    templateUrl: 'view/user/logo.html'
+                'header': {
+                    templateUrl: 'view/user/header.html'
                 },
-                'footer': {
-                    templateUrl: 'view/user/footer.html'
+                'header-padding': {
+                    template: '<div class="header-fix-height-50"></div>'
+                },
+               'footer': {
+                    templateUrl: 'view/common/footer.html'
                 },
             },
         })
@@ -113,7 +121,6 @@ define([
         // child state
         // - anonymous
         //
-        .state('anony.search_topic', ng.copy(stateSearchTopic))
         .state('anony.search_topic_result', ng.copy(stateSearchTopicResult))
         .state('anony.topic', ng.copy(stateTopic))
         .state('anony.group', ng.copy(stateGroup))
@@ -126,17 +133,19 @@ define([
             },
         })
         .state('anony.about', ng.copy(stateAbout))
+        .state('anony.contact_us', ng.copy(stateContactUs))
+        .state('anony.faq', ng.copy(stateFAQ))
         .state('anony.error', ng.copy(stateError))
 
         //
         // child state
         // - user (logined)
         //
-        .state('user.search_topic', ng.copy(stateSearchTopic))
         .state('user.search_topic_result', ng.copy(stateSearchTopicResult))
         .state('user.topic', ng.copy(stateTopic))
         .state('user.group', ng.copy(stateGroup))
         .state('user.profile', {
+            url: '/profile',
             views: {
                 'content@': {
                     templateUrl: 'view/user/profile.html'
@@ -144,6 +153,7 @@ define([
             },
         })
         .state('user.setting', {
+            url: '/setting',
             views: {
                 'content@': {
                     templateUrl: 'view/user/setting.html'
@@ -151,6 +161,8 @@ define([
             },
         })
         .state('user.about', ng.copy(stateAbout))
+        .state('user.contact_us', ng.copy(stateContactUs))
+        .state('user.faq', ng.copy(stateFAQ))
         .state('user.error', ng.copy(stateError))
         ;
     })
@@ -172,7 +184,7 @@ define([
         user.get().then(
             function (data) {
                 $rootScope.user.email = data.email;
-                $state.go('user.search_topic');
+                $state.go('user.about');
             },
             function (err) {
                 $rootScope.ui_state.login = false;

@@ -28,6 +28,10 @@ define(['angular'], function () {
             );
         };
 
+        $scope.logout = function () {
+            console.log('logout is called');
+        };
+
         $scope.dismiss = function () {
             $scope.err_msg = '';
         };

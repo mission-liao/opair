@@ -11,9 +11,6 @@ $color-fg-default:    #FF7538;
 // padding for grid
 $grid_gutter: 5px;
 
-// height of header
-$header_height: 82px;
-
 // content color
 $color-view: #2C3E50;
 $color-footer: #9B59B6;
@@ -46,8 +43,12 @@ $color-content: #34495E;
 //    border-color: red;
 }
 
-.header-fix-height {
-    height: $header_height;
+.header-fix-height-50 {
+    height: $navbar-height;
+}
+
+.header-fix-height-82 {
+    height: 82px;
 }
 
 .content {

@@ -40,6 +40,12 @@ require.config({
             deps: ['jquery'],
             exports: '$.fn.popover'
         },
+        'bootstrap/transition': {
+            deps: ['jquery']
+        },
+        'bootstrap/collapse': {
+            deps: ['jquery', 'bootstrap/transition']
+        },
     },
 });
 
@@ -51,7 +57,8 @@ require([
     'angular',
     'app',
     'requirejs_domready',
-    'bootstrap/dropdown'
+    'bootstrap/dropdown',
+    'bootstrap/collapse',
 ], function (ng, app) {
     'use strict';
 
