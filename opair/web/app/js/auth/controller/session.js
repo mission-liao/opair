@@ -19,7 +19,7 @@ define(['angular'], function () {
             }).then(
                 function (data) {
                     // go to default state for logined-users.
-                    $state.go('user.search_topic');
+                    $state.go('user.profile');
                 },
                 function (err) {
                     // TODO: show error message
@@ -29,7 +29,14 @@ define(['angular'], function () {
         };
 
         $scope.logout = function () {
-            console.log('logout is called');
+            var api = ApiRestangular.one('logout');
+            api.get().then(
+                function (data) {
+                    $state.go('anony.search_topic');
+                },
+                function (err) {
+                }
+            );
         };
 
         $scope.dismiss = function () {

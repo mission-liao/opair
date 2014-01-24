@@ -132,7 +132,7 @@ define([
         .state('anony.search_topic_result', ng.copy(stateSearchTopicResult))
         .state('anony.topic', ng.copy(stateTopic))
         .state('anony.group', ng.copy(stateGroup))
-        .state('anony.search', {
+        .state('anony.search_topic', {
             url: '/search',
             views: {
                 'content@': {

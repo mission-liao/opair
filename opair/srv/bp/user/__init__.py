@@ -1,7 +1,7 @@
 from __future__ import absolute_import
 from flask import Blueprint, request, jsonify
 from flask.views import MethodView
-from flask.ext.login import login_user, login_required, current_user
+from flask.ext.login import login_user, login_required, current_user, logout_user
 from srv import login_mgr, db, model, app, login_serializer
 from sqlalchemy.exc import IntegrityError
 from datetime import datetime
@@ -68,7 +68,15 @@ class LoginView(MethodView):
         a login attempt via token stored in session-cookie
         """
         return jsonify(email=current_user.email), 200
- 
+
+
+class LogoutView(MethodView):
+    def get(self):
+        """
+        a logout attempt
+        """
+        logout_user()
+        return "", 200
 
 class UserView(MethodView):
     def get(self):
@@ -117,4 +125,5 @@ class UserView(MethodView):
 
 api_user.add_url_rule("/r/users/", view_func=UserView.as_view("res-user"), methods=["GET", "POST", ])
 api_user.add_url_rule("/p/login/", view_func=LoginView.as_view("api-login"), methods=["GET", "POST", ])
+api_user.add_url_rule("/p/logout/", view_func=LogoutView.as_view("api-logout"), methods=["GET", ])
 
