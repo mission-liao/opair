@@ -6,34 +6,10 @@ $iconWhiteSpritePath: "../images/glyphicons-halflings-white.png";
 @import "var.scss";
 
 /* Put your CSS here */
-body {
+body, html {
+    height: 100%;
     background-color: black;
     color: white;
-}
-
-#logo {
-    text-align: left;
-    font-weight: bolder;
-    font-size: 335%;
-    padding: 5px;
-}
-
-#logo > span {
-    text-decoration: underline;
-}
-
-#header {
-    background-color: black;
-    top: 0px;
-}
-
-#footer {
-    background-color: $color-footer;
-}
-
-#view {
-    background-color: $color-view;
-    min-height: 512px;
 }
 
 #header {

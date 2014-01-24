@@ -61,3 +61,14 @@ $color-content: #34495E;
     color: #E74C3C;
     height: $input-height-base;
 }
+
+.fill-height {
+    min-height: 100%;
+    height: 100%;
+}
+
+.view {
+    @extend .fill-height;
+
+    background-color: $color-view;
+}
