@@ -39,7 +39,7 @@ define(['angular'], function (ng) {
                 'responseError': function (response) {
                     if (response.status == 401) {
                         // TODO: redirect to a specific login page
-                        $location.path('/a/');
+                        $location.path('/a/search');
                     } else if (response.status >= 500 && response.status < 600) {
                         // cache the response
                         $rootScope.http_response = response;

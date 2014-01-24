@@ -10,12 +10,9 @@
   </div>
 
   <div class="collapse navbar-collapse" id="op-header-navbar-collapse-1">
-    <form class="navbar-form navbar-left" role="search">
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="Search a topic">
-      </div>
-      <button type="submit" class="btn btn-default">Search</button>
-    </form>
+    <ul class="nav navbar-nav">
+      <li><a ui-sref="anony.search">Search</a></li>
+    </ul>
     <div class="nav navbar-nav navbar-right" ng-include="'view/common/auth/form_login.html'">
     </div>
   </div>

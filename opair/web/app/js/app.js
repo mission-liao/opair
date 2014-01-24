@@ -87,6 +87,14 @@ define([
         //
         // main states
         //
+        .state('home', {
+            // just a default state to map urlRouteProvider.otherwise
+            url: '/',
+            views: {
+                // TODO: add some view to notify error.
+                // we shouldn't navigate to this state.
+            }
+        })
         .state('anony', {
             abstract: true,
             url: '/a',
@@ -124,6 +132,14 @@ define([
         .state('anony.search_topic_result', ng.copy(stateSearchTopicResult))
         .state('anony.topic', ng.copy(stateTopic))
         .state('anony.group', ng.copy(stateGroup))
+        .state('anony.search', {
+            url: '/search',
+            views: {
+                'content@': {
+                    templateUrl: 'view/common/topic/search.html'
+                },
+            },
+        })
         .state('anony.sign_up', {
             url: '/sign_up',
             views: {
