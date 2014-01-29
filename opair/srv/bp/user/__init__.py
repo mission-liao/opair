@@ -23,7 +23,7 @@ def load_token(token):
     """
     decrypt token and load User
     """
-    max_age = app.config["REMEMBER_COOKIE_DURATION"].total_seconds()
+    max_age = app.config['REMEMBER_COOKIE_DURATION'].total_seconds()
 
     data = login_serializer.loads(token, max_age=max_age)
     u = model.User.query.filter_by(email=data[0]).first()
@@ -40,7 +40,7 @@ def load_user(uid):
 
 @login_mgr.unauthorized_handler
 def unauthorized():
-    return "", 401
+    return '', 401
 
 
 class LoginView(MethodView):
@@ -123,7 +123,7 @@ class UserView(MethodView):
         return jsonify(id=u.id, error=err), status_code
 
 
-api_user.add_url_rule("/r/users/", view_func=UserView.as_view("res-user"), methods=["GET", "POST", ])
-api_user.add_url_rule("/p/login/", view_func=LoginView.as_view("api-login"), methods=["GET", "POST", ])
-api_user.add_url_rule("/p/logout/", view_func=LogoutView.as_view("api-logout"), methods=["GET", ])
+api_user.add_url_rule('/r/users/', view_func=UserView.as_view('res-user'), methods=['GET', 'POST', ])
+api_user.add_url_rule('/p/login/', view_func=LoginView.as_view('api-login'), methods=['GET', 'POST', ])
+api_user.add_url_rule('/p/logout/', view_func=LogoutView.as_view('api-logout'), methods=['GET', ])
 
