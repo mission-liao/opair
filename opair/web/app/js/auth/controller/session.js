@@ -12,7 +12,7 @@ define(['angular'], function () {
         };
 
         $scope.login = function () {
-            var login = ApiRestangular.all('login');
+            var login = ApiRestangular.all('users/login');
             login.post({
                 email: $scope.user.email,
                 password: $scope.user.password
@@ -29,7 +29,7 @@ define(['angular'], function () {
         };
 
         $scope.logout = function () {
-            var api = ApiRestangular.one('logout');
+            var api = ApiRestangular.one('users/logout');
             api.get().then(
                 function (data) {
                     $state.go('anony.search_topic');

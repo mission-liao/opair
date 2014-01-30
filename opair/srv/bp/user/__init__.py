@@ -124,6 +124,6 @@ class UserView(MethodView):
 
 
 api_user.add_url_rule('/r/users/', view_func=UserView.as_view('res-user'), methods=['GET', 'POST', ])
-api_user.add_url_rule('/p/login/', view_func=LoginView.as_view('api-login'), methods=['GET', 'POST', ])
-api_user.add_url_rule('/p/logout/', view_func=LogoutView.as_view('api-logout'), methods=['GET', ])
+api_user.add_url_rule('/p/users/login/', view_func=LoginView.as_view('api-login'), methods=['GET', 'POST', ])
+api_user.add_url_rule('/p/users/logout/', view_func=LogoutView.as_view('api-logout'), methods=['GET', ])
 
