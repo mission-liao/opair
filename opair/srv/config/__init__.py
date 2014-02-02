@@ -4,7 +4,7 @@ from datetime import timedelta
 def get_sql_uri():
     # the path of dir
     basedir = os.path.abspath(os.path.dirname(__file__))
-    rootdir = os.path.dirname(basedir)
+    rootdir = os.path.dirname(os.path.dirname(basedir))
     dbdir = os.path.join(rootdir, 'db')
 
     return 'sqlite:///' + os.path.join(dbdir, 'app.db')
