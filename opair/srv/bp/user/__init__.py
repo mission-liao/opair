@@ -2,7 +2,7 @@ from __future__ import absolute_import
 from flask import Blueprint, request, jsonify
 from flask.views import MethodView
 from flask.ext.login import login_user, login_required, current_user, logout_user
-from srv import login_mgr, db, model, app, login_serializer
+from srv import login_mgr, sql, model, app, login_serializer
 from sqlalchemy.exc import IntegrityError
 from datetime import datetime
 
@@ -106,12 +106,12 @@ class UserView(MethodView):
             data['gender']
         )
 
-        db.session.add(u)
+        sql.session.add(u)
         try:
-            db.session.commit()
+            sql.session.commit()
         except IntegrityError:
             # the email already used
-            db.session.rollback()
+            sql.session.rollback()
 
             # error code for conflict
             status_code = 409
