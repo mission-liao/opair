@@ -7,6 +7,7 @@ require.config({
         angular_sanitize: '../bower_components/angular-sanitize/angular-sanitize',
         angular_route: '../bower_components/angular-route/angular-route',
         angular_ui_router: '../bower_components/angular-ui-router/release/angular-ui-router.min',
+        angular_bootstrap: '../bower_components/angular-bootstrap/ui-bootstrap-tpls.min',
         jquery: '../bower_components/jquery/jquery',
         bootstrap: '../bower_components/bootstrap-sass/js',
         requirejs_domready: '../bower_components/requirejs-domready/domReady',
@@ -30,21 +31,11 @@ require.config({
         'angular_ui_router': {
             deps: ['angular'],
         },
+        'angular_bootstrap': {
+            deps: ['angular'],
+        },
         'restangular': {
             deps: ['lodash'],
-        },
-        // not beautiful, shim didn't allow wildchar
-        // we have to declare deps for each bootstrap module
-        // we included.
-        'bootstrap/dropdown': {
-            deps: ['jquery'],
-            exports: '$.fn.popover'
-        },
-        'bootstrap/transition': {
-            deps: ['jquery']
-        },
-        'bootstrap/collapse': {
-            deps: ['jquery', 'bootstrap/transition']
         },
     },
 });
@@ -57,8 +48,6 @@ require([
     'angular',
     'app',
     'requirejs_domready',
-    'bootstrap/dropdown',
-    'bootstrap/collapse',
 ], function (ng, app) {
     'use strict';
 

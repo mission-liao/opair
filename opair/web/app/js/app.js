@@ -4,10 +4,12 @@ define([
     'angular_sanitize',
     'angular_route',
     'angular_ui_router',
+    'angular_bootstrap',
     'restangular',
     'common/service',
     'common/controller',
-    'auth/controller'
+    'auth/controller',
+    'topic/controller',
 ], function (ng) {
     'use strict';
 
@@ -17,10 +19,12 @@ define([
         'ngRoute',
         'restangular',
         'ui.router',
+        'ui.bootstrap',
 
         'svc.common',
         'ctrl.common',
-        'ctrl.auth'
+        'ctrl.auth',
+        'ctrl.topic',
     ])
     .config(function ($stateProvider, $urlRouterProvider) {
         // default url is root
