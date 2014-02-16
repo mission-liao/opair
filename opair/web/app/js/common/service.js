@@ -34,6 +34,9 @@ define(['angular'], function (ng) {
                 }
             };
         }])
+        .service('svc_common_countryInfo', ['svc_common_JSLoad', function (JSL) {
+            JSL.invoke_('common/service/country', this, {});
+        }])
         .factory('svc_common_errInterceptor', function ($q, $location, $rootScope) {
             return {
                 'responseError': function (response) {
