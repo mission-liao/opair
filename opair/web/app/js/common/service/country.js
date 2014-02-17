@@ -260,7 +260,13 @@ define(['angular'], function (ng) {
         };
 
         this.get_code = function (name) {
-            // TODO: not implemented
+            for (var i = 0; i < this.info.length; i++) {
+                if (this.info[i].n == name) {
+                    return this.info[i].c;
+                }
+            }
+
+            return null;
         };
 
         this.get_full_name_list = function () {

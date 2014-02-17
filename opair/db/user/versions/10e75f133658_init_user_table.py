@@ -34,7 +34,7 @@ def upgrade_engine1():
         sa.Column('gender', sa.Enum('male', 'female', 'bisexual', 'none', name='gender_type')),
         sa.Column('joinTime', sa.DateTime()),
         sa.Column('bDate', sa.Date()),
-        sa.Column('isActivate', sa.Boolean, default=False)
+        sa.Column('location', sa.Integer, default=0)
     )
 
 def downgrade_engine1():

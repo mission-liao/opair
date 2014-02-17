@@ -1,7 +1,7 @@
 define(['angular'], function () {
     'use strict';
 
-    return ['$scope', '$state', 'svc_common_ApiRestangular', function ($scope, $state, ApiRestangular) {
+    return ['$scope', '$state', 'ApiRestangular', function ($scope, $state, ApiRestangular) {
         // TODO: check if we alreay logined.
 
         $scope.err_msg = '';

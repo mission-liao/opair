@@ -103,7 +103,8 @@ class UserView(MethodView):
             d.date(),
             hash_password(data['password']),
             datetime.now(),
-            data['gender']
+            data['gender'],
+            data['loc']
         )
 
         sql.session.add(u)

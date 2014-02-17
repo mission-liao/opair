@@ -1,10 +1,11 @@
 define(['angular'], function (ng) {
     'use strict';
 
-    return ['$scope', 'RRestangular', function ($scope, RRestangular) {
+    return ['$scope', '$state', 'countryInfo', 'RRestangular', function ($scope, $state, countryInfo, RRestangular) {
 
         $scope.submit_failed = false;
         $scope.err_msg = '';
+        $scope.country_name = '';
 
         $scope.submit_user = function () {
             $scope.submit_failed = false;
@@ -15,9 +16,11 @@ define(['angular'], function (ng) {
                 email: $scope.email,
                 password: $scope.login_psswd,
                 gender: $scope.genders[$scope.gender_sel],
+                loc: countryInfo.get_code($scope.country_name),
                 bday: $scope.bday,
             }).then(
                 function(data) {
+                    $state.go('user.profile');
                 },
                 function(err) {
                     if ('data' in err && typeof(err.data) === 'object' && 'error' in err.data) {

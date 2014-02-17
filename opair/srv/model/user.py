@@ -15,17 +15,17 @@ class User(UserMixin, sql.Model):
     password = sql.Column(sql.String(64))
     gender = sql.Column(sql.Enum('male', 'female', 'bi', 'none', name='gender_type'))
     bDate = sql.Column(sql.Date())
+    location = sql.Column(sql.Integer, default=0)
 
     joinTime = sql.Column(sql.DateTime())
-    isActivate = sql.Column(sql.Boolean(), default=False)
 
-    def __init__(self, email, bDate, passwd, joinTime, gender='none'):
+    def __init__(self, email, bDate, passwd, joinTime, gender='none', loc=0):
         self.email = email
         self.bDate = bDate
         self.password = passwd
         self.joinTime = joinTime
-        self.isActivate = False
         self.gender = gender
+        self.location = loc
 
     def __repr__(self):
         return '<User %s>' % self.email
