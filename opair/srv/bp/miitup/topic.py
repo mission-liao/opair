@@ -1,13 +1,17 @@
 from __future__ import absolute_import
-from flask import Blueprint, request, jsonify, json, current_app
+from flask import Blueprint, request, jsonify, json
 from flask.views import MethodView
 from flask.ext.login import login_required
 from bson import json_util
 from srv import mongo
 
+
 api_topic = Blueprint('topic', __name__)
 
+
 class TopicView(MethodView):
+    """
+    """
 
     @login_required
     def post(self):
@@ -29,12 +33,14 @@ class TopicView(MethodView):
         return "", 200
 
 class TopicSearchView(MethodView):
-
+    """
+    """
     def get(self):
         """
         search a topic based on keyword-matching
         """
-        current_app.logger.error("topic search get")
+        keyword = request.args.get('kw', '')
+        # search by matching title
         return "", 200
 
 

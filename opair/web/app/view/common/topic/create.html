@@ -2,6 +2,8 @@
   <form role="form">
     <input type="text" class="form-control" placeholder="title" ng-model="topic.title">
     <hr>
+    <input type="text" class="form-control" placeholder="tags..." ng-model="topic.tags" typeahead-loading="is_loading_setter" typeahead="n for n in get_tag_suggestion($viewValue) | filter:$viewValue | limitTo:4"></textarea>
+    <hr>
     <textarea class="form-control" placeholder="more details..." ng-model="topic.desc"></textarea>
   </form>
 </div>
