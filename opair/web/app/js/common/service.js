@@ -11,7 +11,6 @@ define(['angular'], function (ng) {
         .factory('svc_common_ApiRestangular', function (Restangular) {
             return Restangular.withConfig(function (RestangularConfigurer) {
                 RestangularConfigurer.setBaseUrl('/p');
-                RestangularConfigurer.setRequestSuffix('/');
             });
         })
         .service('svc_common_JSLoad', ['$injector', function ($injector) {
