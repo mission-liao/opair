@@ -22,7 +22,7 @@ define(['angular'], function () {
         };
 
         $scope.close = function () {
-            $modalInstance.dismiss();
+            $modalInstance.dismiss('cancel');
         };
 
         $scope.is_loading = false;
