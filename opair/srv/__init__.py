@@ -38,7 +38,9 @@ from srv.bp import miitup
 # init blueprints
 # -- user
 app.register_blueprint(user.api_user)
+# -- miitup
 app.register_blueprint(miitup.api_topic)
+app.register_blueprint(miitup.api_tag)
 
 import srv.model
 
