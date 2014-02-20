@@ -3,14 +3,21 @@ define(['angular'], function () {
 
     return ['$scope', '$modalInstance', 'RRestangular', 'ApiRestangular', function ($scope, $modalInstance, RRestangular, ApiRestangular) {
 
-        $scope.topic = {title: '', desc: '', tags: ''};
+        $scope.topic = {title: '', desc: '', tags: '', tag_selected: ''};
         $scope.save = function () {
+
+            // convert tags to array of tokens.
+            var tokens = [];
+            if ($scope.topic.tags.length) {
+                tokens = $scope.topic.tags.replace(' ', '').split(/[,;]/);
+            }
+
             var api = RRestangular.all('topics');
             api.post({
                 title: $scope.topic.title,
+                tags: tokens,
                 desc: $scope.topic.desc,
-            }
-            ).then(
+            }).then(
                 null,
                 // TODO: error handling
                 null
@@ -30,9 +37,17 @@ define(['angular'], function () {
             scope.is_loading = is_loading;
         };
 
+        $scope.formatter = function (val) {
+            if ($scope.topic.tags.length > 0) {
+                $scope.topic.tags += ', ';
+            }
+            $scope.topic.tags += val;
+
+            return $scope.topic.tags;
+        }
+
         $scope.get_tag_suggestion = function (val) {
-            var trimed = val.replace(' ', '');
-            var kw = trimed.split(',;');
+            var kw = val.replace(/\s/g, '').split(/[,;]/);
 
             if ($scope.is_loading) {
                 return [];
