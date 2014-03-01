@@ -40,5 +40,12 @@ nosetests.xml
 # db files
 *.db
 
+# logs
+*.log
+
 # private files
 production.py
+
+# we need this file during development, but won't commit it.
+# there should be only .scss files in this folder
+opair/web/app/css/*.css
