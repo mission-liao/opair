@@ -1,5 +1,5 @@
 from __future__ import absolute_import
-from flask import Blueprint, request, jsonify, current_app
+from flask import Blueprint, request, jsonify
 from flask.views import MethodView
 from flask.ext.login import login_required
 from srv import mongo

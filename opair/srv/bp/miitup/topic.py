@@ -21,9 +21,14 @@ class TopicView(MethodView):
         data = request.get_json()
         # TODO: input validation
 
-        topic_id = mongo.db.topics.insert(data)
+        topic_id = mongo.db.topics.insert({
+            'title': data['title'],
+            'tags': data['tags'],
+            'desc': data['desc']
+        })
         # convert objectId back to json
         tid = json.dumps(topic_id, default=json_util.default, separators=(',', ':'))
+        # TODO: topic-id is not used...
         return jsonify(id=tid, error=""), 200
 
     def get(self, topic_id):
