@@ -12,13 +12,13 @@ if __name__ == "__main__":
     is these two parameters are only used in Flask.__init__, this is
     not capable in our case.
     """
-    import os
+    from os.path import join, dirname, abspath
     from werkzeug import SharedDataMiddleware
 
     app.wsgi_app = SharedDataMiddleware(
         app.wsgi_app,
         {
-            '/': os.path.join(os.path.join(os.path.dirname(__file__), 'web'), 'app')
+            '/': join(join(join(abspath(dirname(__file__)), 'ui'), 'web'), 'app')
         }
     )
 
