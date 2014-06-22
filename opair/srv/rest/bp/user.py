@@ -99,12 +99,12 @@ class UserView(MethodView):
         # create User object
         # TODO: input validation
         u = model.User(
-            data['email'],
-            d.date(),
-            hash_password(data['password']),
-            datetime.now(),
-            data['gender'],
-            data['loc']
+            email = data['email'],
+            bDay = d.date(),
+            password = hash_password(data['password']),
+            joinTime = datetime.now(),
+            gender = data['gender'],
+            nation = data['loc']
         )
 
         sql.session.add(u)
