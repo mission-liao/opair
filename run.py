@@ -18,7 +18,7 @@ if __name__ == "__main__":
     app.wsgi_app = SharedDataMiddleware(
         app.wsgi_app,
         {
-            '/': join(join(join(abspath(dirname(__file__)), 'ui'), 'web'), 'app')
+            '/': join(join(join(abspath(dirname(__file__)), 'client'), 'web'), 'app')
         }
     )
 
