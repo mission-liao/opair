@@ -5,7 +5,7 @@ from itsdangerous import URLSafeTimedSerializer
 from ..factory import create_app, create_rest_app
 
 # globals to avoid import error
-app = create_app(package_name=__name__)
+app = create_app()
 login_mgr = LoginManager()
 # session encrypt/decrypt
 login_serializer = URLSafeTimedSerializer(app.secret_key)
