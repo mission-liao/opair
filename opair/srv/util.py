@@ -10,4 +10,3 @@ def register_all_blueprints(app, blueprint_module):
                 item = getattr(mod, item_name)
                 if isinstance(item, Blueprint):
                     app.register_blueprint(item)
-                    print item_name
