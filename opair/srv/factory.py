@@ -6,7 +6,8 @@ from .util import register_all_blueprints
 from ..defs import APP_DEFAULT_PACKAGE_NAME, APP_CONFIG_NAME, APP_DEFAULT_CONFIG_NAME
 
 
-def create_app(package_name=APP_DEFAULT_PACKAGE_NAME, settings_override=None):
+def create_app(package_name=None, settings_override=None):
+    package_name = package_name or APP_DEFAULT_PACKAGE_NAME
     app = Flask(package_name, instance_relative_config=True)
 
     # try to import global config
@@ -50,7 +51,7 @@ def create_celery_app(app=None, package_name=None):
     app = app or create_app(package_name)
 
     celery = Celery(__name__, broker=app.config['CELERY_BROKER_URL'])
-    celery.config.update(app.config)
+    celery.conf.update(app.config)
 
     TaskBase = celery.Task
     class ContextTask(TaskBase):
