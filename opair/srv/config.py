@@ -9,3 +9,9 @@ REMEMBER_COOKIE_DURATION = timedelta(days=7)
 DEBUG = True 
 PROPAGATE_EXCEPTION = True
 PRESERVE_CONTEXT_ON_EXCEPTION = True
+
+# celery
+CELERY_BROKER_URL = 'amqp://'
+
+# cqlengine
+CQLENGINE_HOSTS = ['127.0.0.1']

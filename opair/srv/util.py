@@ -1,6 +1,13 @@
 from werkzeug.utils import find_modules, import_string
 from flask import Blueprint
+import hashlib
 
+
+def hash_password(password):
+    m = hashlib.sha1()
+    m.update(password)
+    m.update(app.secret_key)
+    return m.hexdigest()
 
 def register_all_blueprints(app, blueprint_module):
     if blueprint_module:

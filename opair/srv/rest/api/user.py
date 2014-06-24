@@ -6,16 +6,7 @@ from opair.srv.rest import login_mgr, app, login_serializer
 from opair.srv import model
 from datetime import datetime
 
-import hashlib
-
 api_user = Blueprint('user', __name__)
-
-
-def hash_password(password):
-    m = hashlib.sha1()
-    m.update(password)
-    m.update(app.secret_key)
-    return m.hexdigest()
 
 
 @login_mgr.token_loader
